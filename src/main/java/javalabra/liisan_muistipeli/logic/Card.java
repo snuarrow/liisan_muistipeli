@@ -55,6 +55,7 @@ public final class Card implements GlobalConstants
     }
     public void set_velocity(double velocity) { this.velocity = velocity; }
     public void set_angle(double angle) { this.angle.set(angle);}
+    
     //// Setters <<< end <<<
     
 }
