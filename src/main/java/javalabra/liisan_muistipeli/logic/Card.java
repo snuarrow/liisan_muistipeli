@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javalabra.liisan_muistipeli.logic;
 
-/**
- *
- * @author hexvaara
- */
 public final class Card implements GlobalConstants
 {
     private int x, y;
