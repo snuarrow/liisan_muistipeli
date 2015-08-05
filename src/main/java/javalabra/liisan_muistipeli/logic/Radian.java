@@ -4,7 +4,7 @@ package javalabra.liisan_muistipeli.logic;
 public class Radian {
     private double value;
     
-    public Radian() { value = 0; }
+    public Radian() { set(0); }
     public Radian(double val) { set(val); }
     
     public void set(double val)
