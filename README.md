@@ -1,4 +1,4 @@
 liisan_muistipeli
 
-muistipeli fysiikkamoottorila.
-dokumentaatiot omassa kansiossaan.
+Muistipeli fysiikkamoottorilla.
+Dokumentaatiot omassa kansiossaan.
