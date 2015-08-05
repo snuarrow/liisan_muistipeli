@@ -50,13 +50,13 @@ public class CardTest
     @Test
     public void testConstructor_x_correct_values_1()
     {
-        assertEquals(1,card.x());
+        assertEquals(0,card.x());
         
     }
     @Test
     public void testConstructor_y_correct_values_1()
     {
-        assertEquals(0,card.y());
+        assertEquals(1,card.y());
     }
 
     /**
