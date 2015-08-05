@@ -17,11 +17,14 @@ public final class Card implements GlobalConstants
         this.pair_id = pair_id;
         velocity = 0;
         angle = new Radian();
-        if(!checkBoundaries()) throw new RuntimeException();
+        checkBoundaries();
     }
-    public boolean checkBoundaries()
+    public void checkBoundaries()
     {
-        return !(fx < 0 || fy < 0 || fx > horizontalsize-cardsize || fy > verticalsize-cardsize);
+        if (fx < 0 || fy < 0 || fx > horizontalsize-cardsize || fy > verticalsize-cardsize || id == pair_id)
+          {
+            throw new IndexOutOfBoundsException();
+          }
     }
     
     // Getters >>> start >>>
@@ -36,13 +39,13 @@ public final class Card implements GlobalConstants
     //// Getters <<< end <<<
     
     // Setters >>> start >>>
-    public boolean set_yx(double y, double x)
+    public void set_yx(double y, double x)
     {
         this.fx = x;
         this.fy = y;
         this.x = (int)x;
         this.y = (int)y;
-        return checkBoundaries();
+        checkBoundaries();
     }
     public void set_velocity(double velocity) { this.velocity = velocity; }
     public void set_angle(double angle) { this.angle.set(angle);}

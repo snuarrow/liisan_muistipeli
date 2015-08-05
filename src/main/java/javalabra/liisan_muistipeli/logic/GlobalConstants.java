@@ -16,4 +16,6 @@ public interface GlobalConstants
     int horizontalamount = (horizontalsize-clearance)/(cardsize+clearance);
     int verticalamount = (verticalsize-clearance)/(cardsize+clearance);
     int lappuamount = horizontalamount*verticalamount;
+    int y_max_index = verticalsize-cardsize;
+    int x_max_index = horizontalsize-cardsize;
 }
