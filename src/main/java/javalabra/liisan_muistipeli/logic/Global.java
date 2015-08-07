@@ -3,9 +3,9 @@ package javalabra.liisan_muistipeli.logic;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-public class Global
+public final class Global
 {
-    private int horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, lappuamount, y_max_index, x_max_index;
+    private int horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
     
     //not used yet but will be in near future
     double acceleration;
@@ -23,15 +23,19 @@ public class Global
         this.image_maxsize = 0;
         this.fps = 60;
         
+        refresh();
+        
+    }
+    public void refresh()
+    {
         timer_interval = 1000/fps;
         clearance = cardsize / 3;
         slot = cardsize + clearance;
         horizontalamount = (horizontalsize-clearance)/(cardsize+clearance);
         verticalamount = (verticalsize-clearance)/(cardsize+clearance);
-        lappuamount = horizontalamount*verticalamount;
+        cardamount = horizontalamount*verticalamount;
         y_max_index = verticalsize-cardsize;
         x_max_index = horizontalsize-cardsize;
-        
     }
 
     public int getHorizontalsize()
@@ -109,19 +113,9 @@ public class Global
         return timer_interval;
     }
 
-    public void setTimer_interval(int timer_interval)
-    {
-        this.timer_interval = timer_interval;
-    }
-
     public int getClearance()
     {
         return clearance;
-    }
-
-    public void setClearance(int clearance)
-    {
-        this.clearance = clearance;
     }
 
     public int getSlot()
@@ -129,19 +123,9 @@ public class Global
         return slot;
     }
 
-    public void setSlot(int slot)
-    {
-        this.slot = slot;
-    }
-
     public int getHorizontalamount()
     {
         return horizontalamount;
-    }
-
-    public void setHorizontalamount(int horizontalamount)
-    {
-        this.horizontalamount = horizontalamount;
     }
 
     public int getVerticalamount()
@@ -149,19 +133,9 @@ public class Global
         return verticalamount;
     }
 
-    public void setVerticalamount(int verticalamount)
+    public int getCardamount()
     {
-        this.verticalamount = verticalamount;
-    }
-
-    public int getLappuamount()
-    {
-        return lappuamount;
-    }
-
-    public void setLappuamount(int lappuamount)
-    {
-        this.lappuamount = lappuamount;
+        return cardamount;
     }
 
     public int getY_max_index()
@@ -169,19 +143,9 @@ public class Global
         return y_max_index;
     }
 
-    public void setY_max_index(int y_max_index)
-    {
-        this.y_max_index = y_max_index;
-    }
-
     public int getX_max_index()
     {
         return x_max_index;
-    }
-
-    public void setX_max_index(int x_max_index)
-    {
-        this.x_max_index = x_max_index;
     }
 
     public double getAcceleration()
