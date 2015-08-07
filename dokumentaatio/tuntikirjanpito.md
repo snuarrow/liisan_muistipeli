@@ -5,3 +5,4 @@
 6.8  0000 -> 0300 pit ei toimi, testien tekoa, card luokan tekoa, luokkakaavioon image luokka
 6.8  1300 -> 1400 pitin ihmettelyä pajassa, pitänee vissiin tehdä projektipohja uusiks
 7.8  1500 -> 1800 picture luokka+testit lähes valmiit, hitboxboard ilman testejä
+7.8  2100 ->      globalconstants interfacen korvaus global luokalla, jotta arvoja voivat muuttua peliä käynnistettäessä
