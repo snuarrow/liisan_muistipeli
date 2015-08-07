@@ -1,13 +1,13 @@
 package javalabra.liisan_muistipeli.logic;
 
-public final class Card implements GlobalConstants
+public final class Card
 {
     private int x, y;
     private final int id, pair_id;
     private double velocity, fx, fy;
     private final Radian angle;
     private final Picture picture;
-    private Global global;
+    private final Global global;
     
     public Card(Global global, int y, int x, int id, int pair_id, Picture picture)
     {
@@ -27,7 +27,7 @@ public final class Card implements GlobalConstants
     {
         // tänne tarvii jonkun validaattorin kuvalle.
         
-        if (fx < 0 || fy < 0 || fx > horizontalsize-cardsize || fy > verticalsize-cardsize || id == pair_id)
+        if (fx < 0 || fy < 0 || fx > global.getHorizontalsize()-global.getCardsize() || fy > global.getVerticalsize()-global.getCardsize() || id == pair_id)
           {
             throw new IndexOutOfBoundsException();
           }

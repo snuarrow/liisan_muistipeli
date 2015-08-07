@@ -10,18 +10,21 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class CardTest implements GlobalConstants
+public class CardTest
 {
     private Card card;
+    private Global global;
     
     public CardTest()
     {
-        card = new Card(1,0,0,1, new Picture(0, "acid3.png"));
+        global = new Global();
+        card = new Card(global, 1,0,0,1, new Picture(0, "acid3.png"));
     }
     
     @Before
     public void setUp()
     {
+        global = new Global();
     }
     
     @After
@@ -33,7 +36,7 @@ public class CardTest implements GlobalConstants
         Throwable e = null;
         try 
         {
-            card = new Card(y,x,id,pair_id, new Picture(0, "acid3.png"));
+            card = new Card(global, y,x,id,pair_id, new Picture(0, "acid3.png"));
         } catch (Throwable ex)
           {
             e = ex;
@@ -103,8 +106,8 @@ public class CardTest implements GlobalConstants
     @Test
     public void test_int_setY_getY_correct_high()
     {
-        card.set_yx(y_max_index, 0);
-        assertEquals(card.y(), y_max_index);
+        card.set_yx(global.getY_max_index(), 0);
+        assertEquals(card.y(), global.getY_max_index());
     }
     @Test
     public void test_int_setY_getY_incorrect_low()
@@ -114,7 +117,7 @@ public class CardTest implements GlobalConstants
     @Test
     public void test_int_setY_getY_incorrect_high()
     {
-        setterTest_exception_thrower(y_max_index+1, 0);
+        setterTest_exception_thrower(global.getY_max_index()+1, 0);
     }
     
     //// SETTER_GETTER_Y TESTS <<< END <<<
@@ -130,8 +133,8 @@ public class CardTest implements GlobalConstants
     @Test
     public void test_int_setX_getX_correct_high()
     {
-        card.set_yx(0, x_max_index);
-        assertEquals(card.x(), x_max_index);
+        card.set_yx(0, global.getX_max_index());
+        assertEquals(card.x(), global.getX_max_index());
     }
     @Test
     public void test_int_setX_incorrect_low()
@@ -141,7 +144,7 @@ public class CardTest implements GlobalConstants
     @Test
     public void test_int_setX_incorrect_high()
     {
-        setterTest_exception_thrower(0, x_max_index+1);
+        setterTest_exception_thrower(0, global.getX_max_index()+1);
     }
     
     //// SETTER_GETTER_X TESTS <<< END <<<

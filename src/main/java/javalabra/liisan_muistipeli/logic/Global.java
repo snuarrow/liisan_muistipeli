@@ -16,6 +16,21 @@ public class Global
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.horizontalsize = screenSize.width-100;
         this.verticalsize = screenSize.height-100;
+        this.cardsize = 80;
+        this.acceleration = 0.005;
+        this.image_displaytime_ms = 3000;
+        this.image_zoomtime_ms = 500;
+        this.image_maxsize = 0;
+        this.fps = 60;
+        
+        timer_interval = 1000/fps;
+        clearance = cardsize / 3;
+        slot = cardsize + clearance;
+        horizontalamount = (horizontalsize-clearance)/(cardsize+clearance);
+        verticalamount = (verticalsize-clearance)/(cardsize+clearance);
+        lappuamount = horizontalamount*verticalamount;
+        y_max_index = verticalsize-cardsize;
+        x_max_index = horizontalsize-cardsize;
         
     }
 
