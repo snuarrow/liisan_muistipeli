@@ -6,8 +6,9 @@ public final class Card implements GlobalConstants
     private final int id, pair_id;
     private double velocity, fx, fy;
     private final Radian angle;
+    private final Picture picture;
     
-    public Card(int y, int x, int id, int pair_id)
+    public Card(int y, int x, int id, int pair_id, Picture picture)
     {
         this.x = x;
         this.y = y;
@@ -17,10 +18,13 @@ public final class Card implements GlobalConstants
         this.pair_id = pair_id;
         velocity = 0;
         angle = new Radian();
+        this.picture = picture;
         checkBoundaries();
     }
     public void checkBoundaries()
     {
+        // tänne tarvii jonkun validaattorin kuvalle.
+        
         if (fx < 0 || fy < 0 || fx > horizontalsize-cardsize || fy > verticalsize-cardsize || id == pair_id)
           {
             throw new IndexOutOfBoundsException();

@@ -76,7 +76,7 @@ public class RadianTest
     @Test
     public void testRadian_over0_and_under2pi()
     {
-        for (int i = 0; i < 314; i++)
+        for (int i = 0; i < 628; i++)
         {
             Radian radian = new Radian(i/100.0);
             assertEquals(radian.get(),i/100.0, 0.001);

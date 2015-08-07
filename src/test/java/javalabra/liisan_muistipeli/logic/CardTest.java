@@ -16,7 +16,7 @@ public class CardTest implements GlobalConstants
     
     public CardTest()
     {
-        card = new Card(1,0,0,1);
+        card = new Card(1,0,0,1, new Picture(0, "acid3.png"));
     }
     
     @Before
@@ -33,7 +33,7 @@ public class CardTest implements GlobalConstants
         Throwable e = null;
         try 
         {
-            card = new Card(y,x,id,pair_id);
+            card = new Card(y,x,id,pair_id, new Picture(0, "acid3.png"));
         } catch (Throwable ex)
           {
             e = ex;
