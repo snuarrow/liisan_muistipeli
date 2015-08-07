@@ -7,9 +7,11 @@ public final class Card implements GlobalConstants
     private double velocity, fx, fy;
     private final Radian angle;
     private final Picture picture;
+    private Global global;
     
-    public Card(int y, int x, int id, int pair_id, Picture picture)
+    public Card(Global global, int y, int x, int id, int pair_id, Picture picture)
     {
+        this.global = global;
         this.x = x;
         this.y = y;
         this.fx = x;

@@ -51,4 +51,9 @@ public class PictureTest
     {
         assertEquals(192, picture.x());
     }
+    @Test
+    public void test_with_acid3_png_192x192_gety()
+    {
+        assertEquals(192, picture.y());
+    }
 }
