@@ -6,7 +6,6 @@
 package javalabra.liisan_muistipeli.logic;
 
 import java.awt.Image;
-import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 
 /**

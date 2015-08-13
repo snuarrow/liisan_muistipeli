@@ -45,6 +45,12 @@ public class PictureTest
     public void tearDown()
     {
     }
+    
+    @Test
+    public void test_with_acid3_png_192x192_getImage()
+    {
+        assertNotNull(picture.image());
+    }
 
     @Test
     public void test_with_acid3_png_192x192_getx()
@@ -55,5 +61,15 @@ public class PictureTest
     public void test_with_acid3_png_192x192_gety()
     {
         assertEquals(192, picture.y());
+    }
+    @Test
+    public void test_with_acid3_png_192x192_getid()
+    {
+        assertEquals(0, picture.id());
+    }
+    @Test
+    public void test_with_acid3_png_192x192_getratio()
+    {
+        assertEquals(1, picture.ratio(), 0.001);
     }
 }

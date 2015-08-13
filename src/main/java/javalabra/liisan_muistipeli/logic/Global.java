@@ -3,7 +3,7 @@ package javalabra.liisan_muistipeli.logic;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-public final class Global
+public final class Global implements GlobalConstants
 {
     private int horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
     
@@ -14,14 +14,14 @@ public final class Global
     public Global()
     {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.horizontalsize = screenSize.width-100;
-        this.verticalsize = screenSize.height-100;
-        this.cardsize = 80;
-        this.acceleration = 0.005;
-        this.image_displaytime_ms = 3000;
-        this.image_zoomtime_ms = 500;
-        this.image_maxsize = 0;
-        this.fps = 60;
+        this.horizontalsize = i_horizontalsize;
+        this.verticalsize = i_verticalsize;
+        this.cardsize = i_cardsize;
+        this.acceleration = i_acceleration;
+        this.image_displaytime_ms = i_image_displaytime_ms;
+        this.image_zoomtime_ms = i_image_zoomtime_ms;
+        this.image_maxsize = i_image_maxsize;
+        this.fps = i_fps;
         
         refresh();
         
