@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="37" failures="0" name="javalabra.liisan_muistipeli.logic.CardTest" time="0.001" errors="0" skipped="0">
+<testsuite tests="20" failures="0" name="javalabra.liisan_muistipeli.logic.GlobalTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -60,41 +60,24 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_set_angle_between_0_and_2pi" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setY_getY_incorrect_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setY_getY_correct_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_y_correct_values_1" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setX_getX_incorrect_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setX_getX_incorrect_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setY_getY_correct_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_slow_velocity_greater_than_acceleration" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setY_getY_incorrect_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_set_velocity_negative_fail" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_y_incorrect" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_set_angle_greater_than_2pi" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setX_getX_correct_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_slow_velocity_same_than_acceleration" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_pair_id_correct_values1" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_x_correct_values_1" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_get_id" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setX_getX_correct_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_get_pair_id" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setY_getY_incorrect_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_set_angle_negative" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_id_correct_values1" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setX_incorrect_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setX_getX_correct_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_incorrect_id_and_pair_id_are_same" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_slow_velocity_0" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setY_getY_correct_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="testConstructor_x_incorrect" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setY_getY_incorrect_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_slow_velocity_smaller_than_acceleration" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_int_setX_incorrect_low" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_id_and_pair_id_cannot_be_same" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_angle_default_radian" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setX_getX_correct_high" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_set_velocity_1_0" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_get_velocity_default" time="0"/>
-  <testcase classname="javalabra.liisan_muistipeli.logic.CardTest" name="test_float_setY_getY_correct_low" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_horizontalsize_1000" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_get_image_max_size" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_refresh_after_constructor" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_cardsize_negative_fail" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_image_zoomtime_ms_negative_fail" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_image_zoomtime_ms_500" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_get_horizontalsize_default" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_verticalsize_1000" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_image_displaytime_3000" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_image_displaytime_negative_fail" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_Constructor" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_image_max_size_112" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_verticalsize_negative_fail" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_get_image_displaytime_ms" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_get_cardsize" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_image_max_size_negative_fail" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_cardsize_112" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_get_image_zoomtime_ms" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_set_horizontalsize_negative_fail" time="0"/>
+  <testcase classname="javalabra.liisan_muistipeli.logic.GlobalTest" name="test_get_verticalsize_default" time="0"/>
 </testsuite>

@@ -8,12 +8,12 @@ public final class Global implements GlobalConstants
     private int horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
     
     //not used yet but will be in near future
-    double acceleration;
+    private double acceleration;
     
     
-    public Global()
+    public Global() //tested
     {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.horizontalsize = i_horizontalsize;
         this.verticalsize = i_verticalsize;
         this.cardsize = i_cardsize;
@@ -26,7 +26,7 @@ public final class Global implements GlobalConstants
         refresh();
         
     }
-    public void refresh()
+    public void refresh() //tested
     {
         timer_interval = 1000/fps;
         clearance = cardsize / 3;
@@ -38,64 +38,82 @@ public final class Global implements GlobalConstants
         x_max_index = horizontalsize-cardsize;
     }
 
-    public int getHorizontalsize()
+    public int getHorizontalsize() //tested_default
     {
         return horizontalsize;
     }
 
-    public void setHorizontalsize(int horizontalsize)
+    public void setHorizontalsize(int horizontalsize) //tested positive
     {
+        // filter negative values plz.
+        
         this.horizontalsize = horizontalsize;
+        refresh();
     }
 
-    public int getVerticalsize()
+    public int getVerticalsize() //tested_default
     {
         return verticalsize;
     }
 
-    public void setVerticalsize(int verticalsize)
+    public void setVerticalsize(int verticalsize) // tested positive
     {
+        // filter negative values plz.
+        
         this.verticalsize = verticalsize;
+        refresh();
     }
 
-    public int getCardsize()
+    public int getCardsize() // tested
     {
         return cardsize;
     }
 
-    public void setCardsize(int cardsize)
+    public void setCardsize(int cardsize) // tested positive
     {
+        // filter negative values plz.
+        
         this.cardsize = cardsize;
+        refresh();
     }
 
-    public int getImage_displaytime_ms()
+    public int getImage_displaytime_ms() // tested
     {
         return image_displaytime_ms;
     }
 
-    public void setImage_displaytime_ms(int image_displaytime_ms)
+    public void setImage_displaytime_ms(int image_displaytime_ms) // tested positive
     {
+        // filter negative values plz.
+        
         this.image_displaytime_ms = image_displaytime_ms;
+        refresh();
     }
 
-    public int getImage_zoomtime_ms()
+    public int getImage_zoomtime_ms() //tested
     {
         return image_zoomtime_ms;
     }
 
-    public void setImage_zoomtime_ms(int image_zoomtime_ms)
+    public void setImage_zoomtime_ms(int image_zoomtime_ms) //tested positive
     {
+        // filter negative values plz.
+        
         this.image_zoomtime_ms = image_zoomtime_ms;
+        refresh();
     }
 
-    public int getImage_maxsize()
+    public int getImage_maxsize() //tested
     {
         return image_maxsize;
     }
 
-    public void setImage_maxsize(int image_maxsize)
+    public void setImage_maxsize(int image_maxsize) //tested positive
     {
+        // filter negative values plz.
+        
         this.image_maxsize = image_maxsize;
+        refresh();
     }
 
     public int getFps()
@@ -105,7 +123,10 @@ public final class Global implements GlobalConstants
 
     public void setFps(int fps)
     {
+        // filter negative values plz.
+        
         this.fps = fps;
+        refresh();
     }
 
     public int getTimer_interval()
@@ -155,7 +176,10 @@ public final class Global implements GlobalConstants
 
     public void setAcceleration(double acceleration)
     {
+        // filter negative values plz.
+        
         this.acceleration = acceleration;
+        refresh();
     }
     
 }

@@ -16,8 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author hexvaara
  */
-public class GlobalTest
+public class GlobalTest implements GlobalConstants
 {
+    private Global global;
     
     public GlobalTest()
     {
@@ -36,6 +37,7 @@ public class GlobalTest
     @Before
     public void setUp()
     {
+        global = new Global();
     }
     
     @After
@@ -46,366 +48,131 @@ public class GlobalTest
     /**
      * Test of refresh method, of class Global.
      */
-    //@Test
-    public void testRefresh()
+    @Test
+    public void test_Constructor()
     {
-        System.out.println("refresh");
-        Global instance = new Global();
-        instance.refresh();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getAcceleration(), i_acceleration, 0.001);
+        assertEquals(global.getCardsize(), i_cardsize);
+        assertEquals(global.getFps(), i_fps);
+        assertEquals(global.getHorizontalsize(), i_horizontalsize);
+        assertEquals(global.getImage_displaytime_ms(), i_image_displaytime_ms);
+        assertEquals(global.getImage_maxsize(), i_image_maxsize);
+        assertEquals(global.getImage_zoomtime_ms(), i_image_zoomtime_ms);
+        assertEquals(global.getVerticalsize(), i_verticalsize);
+        
     }
-
-    /**
-     * Test of getHorizontalsize method, of class Global.
-     */
-    //@Test
-    public void testGetHorizontalsize()
+    @Test
+    public void test_refresh_after_constructor()
     {
-        System.out.println("getHorizontalsize");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getHorizontalsize();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getClearance(), i_cardsize / 3);
+        assertEquals(global.getHorizontalamount(), (i_horizontalsize-global.getClearance())/(i_cardsize+global.getClearance()));
+        assertEquals(global.getSlot(), i_cardsize + global.getClearance());
+        assertEquals(global.getTimer_interval(), 1000/i_fps);
+        assertEquals(global.getVerticalamount(), (i_verticalsize-global.getClearance())/(i_cardsize+global.getClearance()));
+        assertEquals(global.getX_max_index(), i_horizontalsize-i_cardsize);
+        assertEquals(global.getY_max_index(), i_verticalsize-i_cardsize);
     }
-
-    /**
-     * Test of setHorizontalsize method, of class Global.
-     */
-    //@Test
-    public void testSetHorizontalsize()
+    @Test
+    public void test_get_horizontalsize_default()
     {
-        System.out.println("setHorizontalsize");
-        int horizontalsize = 0;
-        Global instance = new Global();
-        instance.setHorizontalsize(horizontalsize);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getHorizontalsize(), i_horizontalsize);
     }
-
-    /**
-     * Test of getVerticalsize method, of class Global.
-     */
-    //@Test
-    public void testGetVerticalsize()
+    @Test
+    public void test_set_horizontalsize_1000()
     {
-        System.out.println("getVerticalsize");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getVerticalsize();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        global.setHorizontalsize(1000);
+        assertEquals(global.getHorizontalsize(), 1000);
     }
-
-    /**
-     * Test of setVerticalsize method, of class Global.
-     */
-    //@Test
-    public void testSetVerticalsize()
+    @Test
+    public void test_set_horizontalsize_negative_fail()
     {
-        System.out.println("setVerticalsize");
-        int verticalsize = 0;
-        Global instance = new Global();
-        instance.setVerticalsize(verticalsize);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // NOT IMPLEMENTED YET
+        assertTrue(true);
     }
-
-    /**
-     * Test of getCardsize method, of class Global.
-     */
-    //@Test
-    public void testGetCardsize()
+    @Test
+    public void test_get_verticalsize_default()
     {
-        System.out.println("getCardsize");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getCardsize();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getVerticalsize(), i_verticalsize);
     }
-
-    /**
-     * Test of setCardsize method, of class Global.
-     */
-    //@Test
-    public void testSetCardsize()
+    @Test
+    public void test_set_verticalsize_1000()
     {
-        System.out.println("setCardsize");
-        int cardsize = 0;
-        Global instance = new Global();
-        instance.setCardsize(cardsize);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        global.setVerticalsize(1000);
+        assertEquals(global.getVerticalsize(), 1000);
     }
-
-    /**
-     * Test of getImage_displaytime_ms method, of class Global.
-     */
-    //@Test
-    public void testGetImage_displaytime_ms()
+    @Test
+    public void test_set_verticalsize_negative_fail()
     {
-        System.out.println("getImage_displaytime_ms");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getImage_displaytime_ms();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // NOT IMPLEMENTED YET
+        assertTrue(true);
     }
-
-    /**
-     * Test of setImage_displaytime_ms method, of class Global.
-     */
-    //@Test
-    public void testSetImage_displaytime_ms()
+    @Test
+    public void test_get_cardsize()
     {
-        System.out.println("setImage_displaytime_ms");
-        int image_displaytime_ms = 0;
-        Global instance = new Global();
-        instance.setImage_displaytime_ms(image_displaytime_ms);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getCardsize(), i_cardsize);
     }
-
-    /**
-     * Test of getImage_zoomtime_ms method, of class Global.
-     */
-    //@Test
-    public void testGetImage_zoomtime_ms()
+    @Test
+    public void test_set_cardsize_112()
     {
-        System.out.println("getImage_zoomtime_ms");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getImage_zoomtime_ms();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        global.setCardsize(112);
+        assertEquals(global.getCardsize(), 112);
     }
-
-    /**
-     * Test of setImage_zoomtime_ms method, of class Global.
-     */
-    //@Test
-    public void testSetImage_zoomtime_ms()
+    @Test
+    public void test_set_cardsize_negative_fail()
     {
-        System.out.println("setImage_zoomtime_ms");
-        int image_zoomtime_ms = 0;
-        Global instance = new Global();
-        instance.setImage_zoomtime_ms(image_zoomtime_ms);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // NOT IMPLEMENTED YET
+        assertTrue(true);
     }
-
-    /**
-     * Test of getImage_maxsize method, of class Global.
-     */
-    //@Test
-    public void testGetImage_maxsize()
+    @Test
+    public void test_get_image_displaytime_ms()
     {
-        System.out.println("getImage_maxsize");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getImage_maxsize();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getImage_displaytime_ms(), i_image_displaytime_ms);
     }
-
-    /**
-     * Test of setImage_maxsize method, of class Global.
-     */
-    //@Test
-    public void testSetImage_maxsize()
+    @Test
+    public void test_set_image_displaytime_3000()
     {
-        System.out.println("setImage_maxsize");
-        int image_maxsize = 0;
-        Global instance = new Global();
-        instance.setImage_maxsize(image_maxsize);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        global.setImage_displaytime_ms(3000);
+        assertEquals(global.getImage_displaytime_ms(), 3000);
     }
-
-    /**
-     * Test of getFps method, of class Global.
-     */
-    //@Test
-    public void testGetFps()
+    @Test
+    public void test_set_image_displaytime_negative_fail()
     {
-        System.out.println("getFps");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getFps();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // NOT IMPLEMENTED YET
+        assertTrue(true);
     }
-
-    /**
-     * Test of setFps method, of class Global.
-     */
-    //@Test
-    public void testSetFps()
+    @Test
+    public void test_get_image_zoomtime_ms()
     {
-        System.out.println("setFps");
-        int fps = 0;
-        Global instance = new Global();
-        instance.setFps(fps);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getImage_zoomtime_ms(),  i_image_zoomtime_ms);
     }
-
-    /**
-     * Test of getTimer_interval method, of class Global.
-     */
-    //@Test
-    public void testGetTimer_interval()
+    @Test
+    public void test_set_image_zoomtime_ms_500()
     {
-        System.out.println("getTimer_interval");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getTimer_interval();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        global.setImage_zoomtime_ms(500);
+        assertEquals(global.getImage_zoomtime_ms(), 500);
     }
-
-    /**
-     * Test of getClearance method, of class Global.
-     */
-    //@Test
-    public void testGetClearance()
+    @Test
+    public void test_set_image_zoomtime_ms_negative_fail()
     {
-        System.out.println("getClearance");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getClearance();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // NOT IMPLEMENTED YET
+        assertTrue(true);
     }
-
-    /**
-     * Test of getSlot method, of class Global.
-     */
-    //@Test
-    public void testGetSlot()
+    @Test
+    public void test_get_image_max_size()
     {
-        System.out.println("getSlot");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getSlot();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(global.getImage_maxsize(), i_image_maxsize);
     }
-
-    /**
-     * Test of getHorizontalamount method, of class Global.
-     */
-    //@Test
-    public void testGetHorizontalamount()
+    @Test
+    public void test_set_image_max_size_112()
     {
-        System.out.println("getHorizontalamount");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getHorizontalamount();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        global.setImage_maxsize(112);
+        assertEquals(global.getImage_maxsize(), 112);
     }
-
-    /**
-     * Test of getVerticalamount method, of class Global.
-     */
-    //@Test
-    public void testGetVerticalamount()
+    @Test
+    public void test_set_image_max_size_negative_fail()
     {
-        System.out.println("getVerticalamount");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getVerticalamount();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCardamount method, of class Global.
-     */
-    //Test
-    public void testGetCardamount()
-    {
-        System.out.println("getCardamount");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getCardamount();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getY_max_index method, of class Global.
-     */
-    //Test
-    public void testGetY_max_index()
-    {
-        System.out.println("getY_max_index");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getY_max_index();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getX_max_index method, of class Global.
-     */
-    //Test
-    public void testGetX_max_index()
-    {
-        System.out.println("getX_max_index");
-        Global instance = new Global();
-        int expResult = 0;
-        int result = instance.getX_max_index();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAcceleration method, of class Global.
-     */
-    //Test
-    public void testGetAcceleration()
-    {
-        System.out.println("getAcceleration");
-        Global instance = new Global();
-        double expResult = 0.0;
-        double result = instance.getAcceleration();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAcceleration method, of class Global.
-     */
-    //Test
-    public void testSetAcceleration()
-    {
-        System.out.println("setAcceleration");
-        double acceleration = 0.0;
-        Global instance = new Global();
-        instance.setAcceleration(acceleration);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // NOT IMPLEMENTED YET
+        assertTrue(true);
     }
     
 }

@@ -83,7 +83,7 @@ public class CardTest
     }
     //// <<< CONSTRUCTOR TESTS END <<<
     
-    public void setterTest_exception_thrower(int y, int x)
+    public void setterTest_exception_thrower_int(int y, int x)
     {
         Throwable e = null;
         try 
@@ -93,6 +93,18 @@ public class CardTest
           {
             e = ex;
           }
+        assertTrue(e instanceof IndexOutOfBoundsException);
+    }
+    public void setterTest_exception_thrower_float(double y, double x)
+    {
+        Throwable e = null;
+        try
+        {
+            card.set_yx(y, x);
+        } catch (Throwable ex)
+        {
+            e = ex;
+        }
         assertTrue(e instanceof IndexOutOfBoundsException);
     }
     
@@ -112,12 +124,12 @@ public class CardTest
     @Test
     public void test_int_setY_getY_incorrect_low()
     {
-        setterTest_exception_thrower(-1, 0);
+        setterTest_exception_thrower_int(-1, 0);
     }
     @Test
     public void test_int_setY_getY_incorrect_high()
     {
-        setterTest_exception_thrower(global.getY_max_index()+1, 0);
+        setterTest_exception_thrower_int(global.getY_max_index()+1, 0);
     }
     
     //// SETTER_GETTER_Y TESTS <<< END <<<
@@ -139,13 +151,177 @@ public class CardTest
     @Test
     public void test_int_setX_incorrect_low()
     {
-        setterTest_exception_thrower(0, -1);
+        setterTest_exception_thrower_int(0, -1);
     }
     @Test
     public void test_int_setX_incorrect_high()
     {
-        setterTest_exception_thrower(0, global.getX_max_index()+1);
+        setterTest_exception_thrower_int(0, global.getX_max_index()+1);
     }
     
     //// SETTER_GETTER_X TESTS <<< END <<<
+    
+    // float_y_TESTS >>> START >>>
+    @Test
+    public void test_float_setY_getY_correct_low()
+    {
+        card.set_yx(0.0, 0.0);
+        assertEquals(card.fy(), 0, 0.001);
+    }
+    @Test
+    public void test_float_setY_getY_correct_high()
+    {
+        card.set_yx(global.getY_max_index(), 0);
+        assertEquals(card.fy(), global.getY_max_index(), 0.001);
+    }
+    @Test
+    public void test_float_setY_getY_incorrect_low()
+    {
+        setterTest_exception_thrower_float(-0.01, 0);
+    }
+    @Test
+    public void test_float_setY_getY_incorrect_high()
+    {
+        setterTest_exception_thrower_float((double)global.getY_max_index()+0.01, 0);
+    }
+    //// float_y_TESTS >>> END >>>
+    
+    // float_y_TESTS >>> START >>>
+    @Test
+    public void test_float_setX_getX_correct_low()
+    {
+        card.set_yx(0.0, 0.0);
+        assertEquals(card.fx(), 0, 0.001);
+    }
+    @Test
+    public void test_float_setX_getX_correct_high()
+    {
+        card.set_yx(0,global.getX_max_index());
+        assertEquals(card.fx(), global.getX_max_index(), 0.001);
+    }
+    @Test
+    public void test_float_setX_getX_incorrect_low()
+    {
+        setterTest_exception_thrower_float(0, -0.01);
+    }
+    @Test
+    public void test_float_setX_getX_incorrect_high()
+    {
+        setterTest_exception_thrower_float((double)global.getX_max_index()+0.01, 0);
+    }
+    //// float_y_TESTS >>> END >>>
+    
+    
+    // id tests >>> START >>>
+    @Test
+    public void test_get_id()
+    {
+        assertEquals(card.id(),0);
+    }
+    @Test
+    public void test_get_pair_id()
+    {
+        assertEquals(card.pair_id(), 1);
+    }
+    @Test
+    public void test_id_and_pair_id_cannot_be_same()
+    {
+        Throwable e = null;
+        try {
+            card = new Card(global, 1,0,0,0, new Picture(0, "acid3.png"));
+        } catch (Throwable ex)
+        {
+            e = ex;
+        }
+        assertTrue(e instanceof IndexOutOfBoundsException);
+    }
+    // id tests <<< END <<<
+    
+    // angle tests >>> START >>>
+    @Test
+    public void test_angle_default_radian()
+    {
+        assertEquals(card.angle(), 0, 0.01);
+    }
+    @Test
+    public void test_set_angle_between_0_and_2pi()
+    {
+        for (int i = 0; i < 628; i++) {
+            card.set_angle(i/100.0);
+            assertEquals(card.angle(),i/100.0,0.0001);
+        }
+    }
+    @Test
+    public void test_set_angle_negative()
+    {
+        card.set_angle(-0.01);
+        assertEquals(card.angle(), (2*Math.PI)-0.01, 0.001);
+    }
+    @Test
+    public void test_set_angle_greater_than_2pi()
+    {
+        card.set_angle((2*Math.PI)+0.01);
+        assertEquals(card.angle(), 0.01, 0.001);
+    }
+    // angle tests <<< END <<<
+    
+    // velocity tests >>> START >>>
+    @Test
+    public void test_get_velocity_default()
+    {
+        assertEquals(card.velocity(), 0, 0.001);
+    }
+    @Test
+    public void test_set_velocity_1_0()
+    {
+        card.set_velocity(1.0);
+        assertEquals(card.velocity(), 1.0, 0.01);
+    }
+    @Test
+    public void test_set_velocity_negative_fail()
+    {
+        Throwable e = null;
+        try
+        {
+            card.set_velocity(-0.01);
+        } catch (Exception ex)
+        {
+            e = ex;
+        }
+        assertTrue(e instanceof IndexOutOfBoundsException);
+    }
+    
+    @Test
+    public void test_slow_velocity_0()
+    {
+        assertEquals(card.velocity(), 0, 0.001);
+        assertFalse(card.slow());
+        assertEquals(card.velocity(), 0, 0.001);
+    }
+    @Test
+    public void test_slow_velocity_same_than_acceleration()
+    {
+        
+        card.set_velocity(global.getAcceleration());
+        assertEquals(card.velocity(), global.getAcceleration(), 0.001);
+        assertFalse(card.slow());
+        assertEquals(card.velocity(), 0, 0.001);
+    }
+    @Test
+    public void test_slow_velocity_greater_than_acceleration()
+    {
+        card.set_velocity(global.getAcceleration()*3);
+        assertEquals(card.velocity(), global.getAcceleration()*3, 0.001);
+        assertTrue(card.slow());
+        assertEquals(card.velocity(), global.getAcceleration()*2, 0.001);
+    }
+    @Test
+    public void test_slow_velocity_smaller_than_acceleration()
+    {
+        card.set_velocity(global.getAcceleration()/2);
+        assertEquals(card.velocity(), global.getAcceleration()/2, 0.001);
+        assertFalse(card.slow());
+        assertEquals(card.velocity(), 0, 0.001);
+    }
+    // velocity tests <<< END <<<
 }

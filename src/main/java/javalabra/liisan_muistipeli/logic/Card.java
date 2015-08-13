@@ -32,20 +32,25 @@ public final class Card
             throw new IndexOutOfBoundsException();
           }
     }
+    public boolean slow() //tested
+    {
+        if (velocity > global.getAcceleration()) { velocity -= global.getAcceleration(); return true; }
+        else { velocity = 0; return false; }
+    }
     
     // Getters >>> start >>>
-    public int x() { return x; }
-    public int y() { return y; }
-    public double fx() { return fx; }
-    public double fy() { return fy; }
-    public int id() { return id; }
-    public int pair_id() { return pair_id; }
-    public double angle() { return angle.get(); }
+    public int x() { return x; }  //tested
+    public int y() { return y; }  //tested
+    public double fx() { return fx; } //tested
+    public double fy() { return fy; } //tested
+    public int id() { return id; } //tested
+    public int pair_id() { return pair_id; } //tested
+    public double angle() { return angle.get(); } //tested
     public double velocity() { return velocity; }
     //// Getters <<< end <<<
     
     // Setters >>> start >>>
-    public void set_yx(double y, double x)
+    public void set_yx(double y, double x) //tested
     {
         this.fx = x;
         this.fy = y;
@@ -53,8 +58,12 @@ public final class Card
         this.y = (int)y;
         checkBoundaries();
     }
-    public void set_velocity(double velocity) { this.velocity = velocity; }
-    public void set_angle(double angle) { this.angle.set(angle);}
+    public void set_velocity(double velocity) //tested
+    {
+        if (velocity >= 0) this.velocity = velocity;
+        else throw new IndexOutOfBoundsException();
+    }
+    public void set_angle(double angle) { this.angle.set(angle);} //tested
     
     //// Setters <<< end <<<
     
