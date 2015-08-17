@@ -1,0 +1,395 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Radian.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package liisan_muistipeli.logic;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>//class of angle in radian, has only values from 0 to 2*pi.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Radian {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private double value;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_7'/>
+7
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_7'>1</a>
+<span>
+1. <init> : removed call to liisan_muistipeli/logic/Radian::set &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    public Radian() { set(0); }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_8'/>
+8
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_8'>1</a>
+<span>
+1. <init> : removed call to liisan_muistipeli/logic/Radian::set &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public Radian(double val) { set(val); }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void set(double val)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_12'/>
+12
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_12'>3</a>
+<span>
+1. set : Replaced double subtraction with addition &rarr; TIMED_OUT<br/>
+2. set : negated conditional &rarr; TIMED_OUT<br/>
+3. set : changed conditional boundary &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>        while(val &#62;= 2*Math.PI) val -= 2*Math.PI;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_13'/>
+13
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_13'>3</a>
+<span>
+1. set : Replaced double addition with subtraction &rarr; TIMED_OUT<br/>
+2. set : negated conditional &rarr; TIMED_OUT<br/>
+3. set : changed conditional boundary &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>        while(val &#60; 0) val += 2*Math.PI;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_14'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        value = val;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_15'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_16'/>
+16
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_16'>1</a>
+<span>
+1. get : replaced return of double value with -(x + 1) for liisan_muistipeli/logic/Radian::get &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public double get() { return value; }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2536ef3c_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2536ef3c_7'>7</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_7'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>none</span></span> removed call to liisan_muistipeli/logic/Radian::set &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2536ef3c_8'>8</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_8'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>liisan_muistipeli.logic.RadianTest.liisan_muistipeli.logic.RadianTest</span></span> removed call to liisan_muistipeli/logic/Radian::set &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2536ef3c_12'>12</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_12'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>set<br/><b>Killed by : </b>liisan_muistipeli.logic.RadianTest.liisan_muistipeli.logic.RadianTest</span></span> changed conditional boundary &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>set<br/><b>Killed by : </b>none</span></span> Replaced double subtraction with addition &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>set<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2536ef3c_13'>13</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_13'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>set<br/><b>Killed by : </b>liisan_muistipeli.logic.RadianTest.liisan_muistipeli.logic.RadianTest</span></span> changed conditional boundary &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>set<br/><b>Killed by : </b>none</span></span> Replaced double addition with subtraction &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>set<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2536ef3c_16'>16</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2536ef3c_16'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>get<br/><b>Killed by : </b>liisan_muistipeli.logic.RadianTest.liisan_muistipeli.logic.RadianTest</span></span> replaced return of double value with -(x + 1) for liisan_muistipeli/logic/Radian::get &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>liisan_muistipeli.logic.CardTest.testConstructor_pair_id_correct_values1(liisan_muistipeli.logic.CardTest) (8 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setX_incorrect_high(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.test_get_velocity_default(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.test_set_angle_negative(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.testConstructor_x_correct_values_1(liisan_muistipeli.logic.CardTest) (6 ms)</li><li>liisan_muistipeli.logic.CardTest.test_set_velocity_negative_fail(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setX_getX_incorrect_high(liisan_muistipeli.logic.CardTest) (6 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setY_getY_correct_low(liisan_muistipeli.logic.CardTest) (7 ms)</li><li>liisan_muistipeli.logic.CardTest.test_angle_default_radian(liisan_muistipeli.logic.CardTest) (9 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setX_getX_correct_high(liisan_muistipeli.logic.CardTest) (6 ms)</li><li>liisan_muistipeli.logic.CardTest.test_get_id(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.test_slow_velocity_same_than_acceleration(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.testConstructor_y_correct_values_1(liisan_muistipeli.logic.CardTest) (9 ms)</li><li>liisan_muistipeli.logic.CardTest.test_id_and_pair_id_cannot_be_same(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.test_set_angle_between_0_and_2pi(liisan_muistipeli.logic.CardTest) (8 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setY_getY_correct_high(liisan_muistipeli.logic.CardTest) (8 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setY_getY_incorrect_high(liisan_muistipeli.logic.CardTest) (6 ms)</li><li>liisan_muistipeli.logic.CardTest.test_set_angle_greater_than_2pi(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setY_getY_correct_low(liisan_muistipeli.logic.CardTest) (8 ms)</li><li>liisan_muistipeli.logic.CardTest.test_slow_velocity_smaller_than_acceleration(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setY_getY_correct_high(liisan_muistipeli.logic.CardTest) (8 ms)</li><li>liisan_muistipeli.logic.RadianTest.liisan_muistipeli.logic.RadianTest (4 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setX_getX_correct_high(liisan_muistipeli.logic.CardTest) (6 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setX_getX_correct_low(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.testConstructor_id_correct_values1(liisan_muistipeli.logic.CardTest) (202 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setY_getY_incorrect_high(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.testConstructor_incorrect_id_and_pair_id_are_same(liisan_muistipeli.logic.CardTest) (10 ms)</li><li>liisan_muistipeli.logic.CardTest.test_set_velocity_1_0(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.test_slow_velocity_0(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.testConstructor_y_incorrect(liisan_muistipeli.logic.CardTest) (9 ms)</li><li>liisan_muistipeli.logic.CardTest.test_get_pair_id(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setX_getX_correct_low(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.test_slow_velocity_greater_than_acceleration(liisan_muistipeli.logic.CardTest) (4 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setY_getY_incorrect_low(liisan_muistipeli.logic.CardTest) (7 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setX_incorrect_low(liisan_muistipeli.logic.CardTest) (5 ms)</li><li>liisan_muistipeli.logic.CardTest.testConstructor_x_incorrect(liisan_muistipeli.logic.CardTest) (9 ms)</li><li>liisan_muistipeli.logic.CardTest.test_float_setX_getX_incorrect_low(liisan_muistipeli.logic.CardTest) (6 ms)</li><li>liisan_muistipeli.logic.CardTest.test_int_setY_getY_incorrect_low(liisan_muistipeli.logic.CardTest) (5 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.4
+
+</body>
+</html>

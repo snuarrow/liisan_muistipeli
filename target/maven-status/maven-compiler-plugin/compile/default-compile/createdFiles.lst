@@ -1,7 +1,10 @@
-javalabra/liisan_muistipeli/logic/Picture.class
-javalabra/liisan_muistipeli/logic/GlobalConstants.class
-javalabra/liisan_muistipeli/logic/Radian.class
-javalabra/liisan_muistipeli/Main.class
-javalabra/liisan_muistipeli/logic/Global.class
-javalabra/liisan_muistipeli/logic/Card.class
-javalabra/liisan_muistipeli/logic/HitBoxBoard.class
+liisan_muistipeli/gui/MainFrame.class
+liisan_muistipeli/logic/Engine.class
+liisan_muistipeli/logic/Global.class
+liisan_muistipeli/logic/Radian.class
+liisan_muistipeli/logic/Card.class
+liisan_muistipeli/logic/PositionController.class
+liisan_muistipeli/logic/GlobalConstants.class
+liisan_muistipeli/logic/HitBoxBoard.class
+liisan_muistipeli/Main.class
+liisan_muistipeli/logic/Picture.class
