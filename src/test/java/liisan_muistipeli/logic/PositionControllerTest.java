@@ -76,6 +76,11 @@ public class PositionControllerTest
         assertEquals(1, pc.get_cards().size());
         assertEquals(0, pc.getIds().size());
     }
+    @Test
+    public void test_get_by_coordinates_1()
+    {
+        assertEquals(1, pc.get_by_coordinates(0, 0).id());
+    }
 
     /**
      * Test of getIds method, of class PositionController.

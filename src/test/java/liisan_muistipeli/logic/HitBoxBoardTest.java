@@ -100,7 +100,7 @@ public class HitBoxBoardTest
     }
     @
     Test
-    public void test_collide()
+    public void test_collide_should_collide()
     {
         g.setHorizontalsize(10);
         g.setVerticalsize(10);
@@ -112,6 +112,19 @@ public class HitBoxBoardTest
         h.setCard(temp2);
         assertEquals(1, h.checkCollision(temp2));
         
+    }
+    @Test
+    public void test_collide_should_not_collide()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        h = new HitBoxBoard(g);
+        Card temp = new Card(g,0,0,1,2,new Picture(0, "acid3.png"));
+        Card temp2 = new Card(g,5,5,2,1,new Picture(0, "acid3.png"));
+        h.setCard(temp);
+        h.setCard(temp2);
+        assertEquals(0, h.checkCollision(temp2));
     }
     @Test
     public void temp_test()
