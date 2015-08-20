@@ -1,7 +1,7 @@
 package liisan_muistipeli.logic;
 
 /**
- * Luokka yhden muistipelikortin sijainnin ja kuvan hallitsemiseen.
+ * Luokka yhden muistipelikortin sijainnin ja kuvan tallentamiseen.
  */
 public final class Card
 {

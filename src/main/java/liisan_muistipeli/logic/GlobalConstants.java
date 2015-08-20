@@ -1,5 +1,8 @@
 package liisan_muistipeli.logic;
 
+/**
+ * Oletusarvoiset globaalit muuttujat tulevat tästä interfacesta
+ */
 
 public interface GlobalConstants
 {

@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package liisan_muistipeli.logic;
 
 /**
- *
- * @author hexvaara
+ * Luokka koostuu 2 ulotteisesta taulukosta ja taulukon alkioihin kirjoitetaan osumalaatikon muotoisia muotoja kortin id:llä, eli esim kortti jonka id on 1 löytyy laudalta neliönä jonka laidat ovat ykkösiä.
+ * HitBoxBoardilla hallitaan korttien osumista toisiinsa.
  */
 public class HitBoxBoard
 {

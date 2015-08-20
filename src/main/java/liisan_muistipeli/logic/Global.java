@@ -3,6 +3,10 @@ package liisan_muistipeli.logic;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+/**
+ * Globaalien muuttujien luokka, josta luodaan yksi instanssi jaettavaksi muille sitä tarvitsaville luokille. mahdollistaa joidenkin muuttujien muuttamisen.
+ */
+
 public final class Global implements GlobalConstants
 {
     private int defalut_start_speed, pictures_in_folder, horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;

@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package liisan_muistipeli.logic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- * @author hexvaara
+ * Luokka joka kontrolloi korttien sijaintia pelissä, päivittää hitboxboard luokkaa sekä korttien koordinaatteja
  */
 public class PositionController
 {
@@ -61,12 +55,7 @@ public class PositionController
         }
     }
     
-    public void changeCoordinates(Card card, double newY, double newX) // tää taitaa olla ohjelman kannalta turha
-    {
-        hitboxboard.delCard(card);
-        card.set_yx(newY, newX);
-        hitboxboard.setCard(card);
-    }
+    
     public boolean move_card(int id)
     {
         boolean returnvalue = false;
@@ -100,11 +89,11 @@ public class PositionController
     }
     public void ping_against_the_wall(Card card)
     {
-        if (card.fx() >= global.getX_max_index() || card.fx() < 0)
+        if (card.fx() >= global.getX_max_index() || card.fx() <= 0)
         {
             card.set_angle((2*Math.PI-card.angle()));
         } // 2*Pi-angle, vasen tai oikea laita.
-        if (card.fy() >= global.getY_max_index() || card.fy() < 0)
+        if (card.fy() >= global.getY_max_index() || card.fy() <= 0)
         {
             card.set_angle((Math.PI-card.angle()));
         } // Pi-angle, ylä tai alalaita.

@@ -1,6 +1,9 @@
 package liisan_muistipeli.logic;
 
-//class of angle in radian, has only values from 0 to 2*pi.
+/**
+ * Kortin kulkusuunnan määrittävä kulman sisältävä luokka, voi antaa mitä 
+ * tahansa arvoja, mutta tämä muuttaa ne aina välille 0-2*pi radian.
+ */
 public class Radian {
     private double value;
     

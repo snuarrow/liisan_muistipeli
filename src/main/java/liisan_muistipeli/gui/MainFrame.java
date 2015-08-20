@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package liisan_muistipeli.gui;
 
 import java.awt.*;
@@ -15,8 +10,7 @@ import liisan_muistipeli.logic.Global;
 import liisan_muistipeli.logic.Picture;
 
 /**
- *
- * @author hexvaara
+ * Graafinen käyttöliittymä engine luokan käyttämiseen. sisältää toiminnallisuutta mm. hiiren seuraamista ja ajastimien ylläpitoa. 
  */
 public class MainFrame extends JPanel implements ActionListener, MouseListener
 {
