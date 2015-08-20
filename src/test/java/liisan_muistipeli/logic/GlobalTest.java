@@ -176,5 +176,33 @@ public class GlobalTest implements GlobalConstants
         // NOT IMPLEMENTED YET
         assertTrue(true);
     }
-    
+    @Test
+    public void test_set_fps()
+    {
+        global.setFps(30);
+        assertEquals(global.getFps(),30);
+        assertEquals(global.getFps(),1000/global.getTimer_interval());
+    }
+    @Test
+    public void test_get_card_amount()
+    {
+        global.setHorizontalsize(130);
+        global.setVerticalsize(130);
+        global.setCardsize(30);
+        //assertEquals(345, global.getVerticalamount());
+        //assertEquals(456, global.getVerticalamount());
+        assertEquals(8, global.getCardamount());
+        
+    }
+    @Test
+    public void test_get_pictures_in_folder()
+    {
+        assertEquals(global.getPicturesInFolder(), i_pictures_in_folder);
+    }
+    @Test
+    public void test_set_acceleration()
+    {
+        global.setAcceleration(1.23456789);
+        assertEquals(1.23456789, global.getAcceleration(), 0.000000001);
+    }
 }

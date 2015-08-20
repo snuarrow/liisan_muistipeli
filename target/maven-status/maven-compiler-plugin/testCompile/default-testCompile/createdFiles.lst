@@ -3,3 +3,4 @@ liisan_muistipeli/logic/RadianTest.class
 liisan_muistipeli/logic/CardTest.class
 liisan_muistipeli/logic/HitBoxBoardTest.class
 liisan_muistipeli/logic/GlobalTest.class
+liisan_muistipeli/logic/PositionControllerTest.class

@@ -19,19 +19,41 @@ public class HitBoxBoard
         g = global;
         board = new int[g.getVerticalsize()][g.getHorizontalsize()];
         memset(0);
+        
+        
     }
-    private void memset(int c) { for (int[] board1 : board) { for (int i : board1) { i = c; } } } // write every cell in board with c.
+    public void memset(int c) 
+    {
+        for (int y = 0; y < g.getY_max_index(); y++)
+        {
+            for (int x = 0; x < g.getX_max_index(); x++)
+            {
+                  board[y][x] = c;
+            }
+        }
+    } // write every cell in board with c.
 
     public void setCard(Card card) // piirtää laudalle onton neliön kortin id:tä
     {
         for (int i = 0; i < g.getCardsize(); i++)
         {
-            if (board[card.y()][card.x()+i] == 0) board[card.y()][card.x()+i] = card.id();
-            if (board[card.y()+g.getCardsize()][card.x()+i] == 0) board[card.y()+g.getCardsize()][card.x()+i] = card.id();
-            if (board[card.y()+i][card.x()] == 0) board[card.y()+i][card.x()] = card.id();
-            if (board[card.y()+i][card.x()+g.getCardsize()] == 0) board[card.y()+i][card.x()+g.getCardsize()] = card.id();
+            if (board[card.y()][card.x()+i] == 0)
+            {
+                board[card.y()][card.x()+i] = card.id();
+            }
+            if (board[card.y()+g.getCardsize()-1][card.x()+i] == 0)
+            {
+                board[card.y()+g.getCardsize()-1][card.x()+i] = card.id();
+            }
+            if (board[card.y()+i][card.x()] == 0)
+            {
+                board[card.y()+i][card.x()] = card.id();
+            }
+            if (board[card.y()+i][card.x()+g.getCardsize()-1] == 0)
+            {
+                board[card.y()+i][card.x()+g.getCardsize()-1] = card.id();
+            }
         }
-
         // muuta hitboksi ympyräks sit ku toimii kaikki muuten, siihe asti ontolla neliöllä.
         
         /*
@@ -44,9 +66,9 @@ public class HitBoxBoard
         for (int i = 0; i < g.getCardsize(); i++)
         {
             if (board[card.y()][card.x()+i] == card.id()) board[card.y()][card.x()+i] = 0;
-            if (board[card.y()+g.getCardsize()][card.x()+i] == card.id()) board[card.y()+g.getCardsize()][card.x()+i] = 0;
+            if (board[card.y()+g.getCardsize()-1][card.x()+i] == card.id()) board[card.y()+g.getCardsize()-1][card.x()+i] = 0;
             if (board[card.y()+i][card.x()] == card.id()) board[card.y()+i][card.x()] = 0;
-            if (board[card.y()+i][card.x()+g.getCardsize()] == card.id()) board[card.y()+i][card.x()+g.getCardsize()] = 0;
+            if (board[card.y()+i][card.x()+g.getCardsize()-1] == card.id()) board[card.y()+i][card.x()+g.getCardsize()-1] = 0;
         }
     }
     public int checkCollision(Card card) // tarkistaa onko joku kortin id:stä toisen kortin id, eli on törmännyt
@@ -56,9 +78,9 @@ public class HitBoxBoard
         for (int i = 0; i < g.getCardsize(); i++)
         {
             if (board[card.y()][card.x()+i] != card.id()) return board[card.y()][card.x()+i];
-            if (board[card.y()+g.getCardsize()][card.x()+i] != card.id()) return board[card.y()+g.getCardsize()][card.x()+i];
+            if (board[card.y()+g.getCardsize()-1][card.x()+i] != card.id()) return board[card.y()+g.getCardsize()-1][card.x()+i];
             if (board[card.y()+i][card.x()] != card.id()) return board[card.y()+i][card.x()];
-            if (board[card.y()+i][card.x()+g.getCardsize()] != card.id()) return board[card.y()+i][card.x()+g.getCardsize()];
+            if (board[card.y()+i][card.x()+g.getCardsize()-1] != card.id()) return board[card.y()+i][card.x()+g.getCardsize()-1];
         }
         return 0;
     }
@@ -67,7 +89,7 @@ public class HitBoxBoard
         return board[y][x];
     }
     
-    public void print()
+    public void print() // this function for debugging only
     {
         for (int y = 0; y < g.getVerticalsize(); y++) {
             for (int x = 0; x < g.getHorizontalsize(); x++) {

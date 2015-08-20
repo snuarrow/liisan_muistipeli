@@ -83,7 +83,12 @@ public class PositionController
             x += card.velocity()*Math.sin(card.angle());
             y += card.velocity()*Math.cos(card.angle());
         
-            if (!card.set_yx(y, x)) ping_against_the_wall(card); // if fails, card is next to wall, else its free to move.
+            if (!card.set_yx(y, x))
+            {
+                System.out.println("ping_against_the_wall() was called!");
+                card.set_angle(card.angle()-Math.PI);
+                //ping_against_the_wall(card);
+            } // if fails, card is next to wall, else its free to move.
             
             hitboxboard.setCard(card);
             int collided_id = hitboxboard.checkCollision(card);

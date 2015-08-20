@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 
 public final class Global implements GlobalConstants
 {
-    private int pictures_in_folder, horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
+    private int defalut_start_speed, pictures_in_folder, horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
     
     //not used yet but will be in near future
     private double acceleration;
@@ -14,6 +14,14 @@ public final class Global implements GlobalConstants
     public Global() //tested
     {
         //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        renew();
+        refresh();
+        
+    }
+    public void renew()
+    {
+        this.defalut_start_speed = i_default_start_speed;
         this.horizontalsize = i_horizontalsize;
         this.verticalsize = i_verticalsize;
         this.cardsize = i_cardsize;
@@ -23,10 +31,9 @@ public final class Global implements GlobalConstants
         this.image_maxsize = i_image_maxsize;
         this.fps = i_fps;
         this.pictures_in_folder = i_pictures_in_folder;
-        
-        refresh();
-        
     }
+    
+    
     public void refresh() //tested
     {
         timer_interval = 1000/fps;
@@ -38,9 +45,14 @@ public final class Global implements GlobalConstants
         y_max_index = verticalsize-cardsize;
         x_max_index = horizontalsize-cardsize;
         
-        //if (horizontalamount*verticalamount % 2 != 0) cardamount = (horizontalamount*verticalamount)-1;
-        //else cardamount = horizontalamount*verticalamount;
+        if (horizontalamount*verticalamount % 2 != 0) cardamount = (horizontalamount*verticalamount)-1;
+        else cardamount = horizontalamount*verticalamount;
     }
+    public int getDefaultStartSpeed()
+    {
+        return defalut_start_speed;
+    }
+    
     public int getPicturesInFolder() { return this.pictures_in_folder; }
 
     public int getHorizontalsize() //tested_default
@@ -126,7 +138,7 @@ public final class Global implements GlobalConstants
         return fps;
     }
 
-    public void setFps(int fps)
+    public void setFps(int fps) // tested positive
     {
         // filter negative values plz.
         

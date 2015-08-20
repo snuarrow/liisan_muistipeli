@@ -5,13 +5,17 @@
  */
 package liisan_muistipeli.logic;
 
-import liisan_muistipeli.logic.Picture;
-import liisan_muistipeli.logic.Card;
-import liisan_muistipeli.logic.Global;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+
+
+// WRITE TEST FOR: CARD ID CANT BE 0
+
+
+
 
 public class CardTest
 {
@@ -21,13 +25,14 @@ public class CardTest
     public CardTest()
     {
         global = new Global();
-        card = new Card(global, 1,0,0,1, new Picture(0, "acid3.png"));
+        card = new Card(global, 1,0,1,2, new Picture(0, "acid3.png"));
     }
     
     @Before
     public void setUp()
     {
         global = new Global();
+        //card = new Card(global, 1,0,1,2, new Picture(0, "acid3.png"));
     }
     
     @After
@@ -46,22 +51,41 @@ public class CardTest
           }
         assertTrue(e instanceof IndexOutOfBoundsException);
     }
+    @Test
+    public void when_double_values_are_altered_integer_values_change_also()
+    {
+        Card c = new Card(global, 1,0,1,2, new Picture(0, "acid3.png"));
+        c.set_yx(50.1, 60.1);
+        assertEquals(50, c.y());
+        assertEquals(60, c.x());
+    }
+    
+    @Test
+    public void test_id_cannot_be_0()
+    {
+        constructorTest_exception_thrower(0, 0, 0, 1);
+    }
+    @Test
+    public void test_pair_id_cannot_be_0()
+    {
+        constructorTest_exception_thrower(0, 0, 1, 0);
+    }
     
     // CONSTRUCTOR TESTS >>> START >>>
     @Test
     public void testConstructor_x_incorrect()
     {
-        constructorTest_exception_thrower(0,-1,0,1);
+        constructorTest_exception_thrower(0,-1,1,2);
     }
     @Test
     public void testConstructor_y_incorrect()
     {
-        constructorTest_exception_thrower(-1,0,0,1);
+        constructorTest_exception_thrower(-1,0,1,2);
     }
     @Test
     public void testConstructor_incorrect_id_and_pair_id_are_same()
     {
-        constructorTest_exception_thrower(0,0,0,0);
+        constructorTest_exception_thrower(0,0,1,1);
     }
     @Test
     public void testConstructor_x_correct_values_1()
@@ -77,12 +101,12 @@ public class CardTest
     @Test
     public void testConstructor_id_correct_values1()
     {
-        assertEquals(0, card.id());
+        assertEquals(1, card.id());
     }
     @Test
     public void testConstructor_pair_id_correct_values1()
     {
-        assertEquals(1, card.pair_id());
+        assertEquals(2, card.pair_id());
     }
     //// <<< CONSTRUCTOR TESTS END <<<
     
@@ -127,12 +151,13 @@ public class CardTest
     @Test
     public void test_int_setY_getY_incorrect_low()
     {
-        setterTest_exception_thrower_int(-1, 0);
+        assertTrue(!(card.set_yx(-1, 0)));
+        //setterTest_exception_thrower_int(-1, 0);
     }
     @Test
     public void test_int_setY_getY_incorrect_high()
     {
-        setterTest_exception_thrower_int(global.getY_max_index()+1, 0);
+        assertTrue(!card.set_yx(global.getY_max_index()+1, 0));
     }
     
     //// SETTER_GETTER_Y TESTS <<< END <<<
@@ -154,12 +179,12 @@ public class CardTest
     @Test
     public void test_int_setX_incorrect_low()
     {
-        setterTest_exception_thrower_int(0, -1);
+        assertTrue(!(card.set_yx(0, -1)));
     }
     @Test
     public void test_int_setX_incorrect_high()
     {
-        setterTest_exception_thrower_int(0, global.getX_max_index()+1);
+        assertTrue(!(card.set_yx(0, global.getX_max_index()+1)));
     }
     
     //// SETTER_GETTER_X TESTS <<< END <<<
@@ -180,12 +205,13 @@ public class CardTest
     @Test
     public void test_float_setY_getY_incorrect_low()
     {
-        setterTest_exception_thrower_float(-0.01, 0);
+        assertTrue(!(card.set_yx(-0.01, 0)));
     }
     @Test
     public void test_float_setY_getY_incorrect_high()
     {
-        setterTest_exception_thrower_float((double)global.getY_max_index()+0.01, 0);
+        assertTrue(!(card.set_yx((double)global.getY_max_index()+0.01, 0)));
+        //setterTest_exception_thrower_float((double)global.getY_max_index()+0.01, 0);
     }
     //// float_y_TESTS >>> END >>>
     
@@ -205,12 +231,14 @@ public class CardTest
     @Test
     public void test_float_setX_getX_incorrect_low()
     {
-        setterTest_exception_thrower_float(0, -0.01);
+        assertTrue(!(card.set_yx(0, -0.01)));
+        //setterTest_exception_thrower_float(0, -0.01);
     }
     @Test
     public void test_float_setX_getX_incorrect_high()
     {
-        setterTest_exception_thrower_float((double)global.getX_max_index()+0.01, 0);
+        assertTrue(!(card.set_yx((double)global.getX_max_index()+0.01, 0)));
+        //setterTest_exception_thrower_float((double)global.getX_max_index()+0.01, 0);
     }
     //// float_y_TESTS >>> END >>>
     
@@ -219,12 +247,12 @@ public class CardTest
     @Test
     public void test_get_id()
     {
-        assertEquals(card.id(),0);
+        assertEquals(1, card.id());
     }
     @Test
     public void test_get_pair_id()
     {
-        assertEquals(card.pair_id(), 1);
+        assertEquals(2, card.pair_id());
     }
     @Test
     public void test_id_and_pair_id_cannot_be_same()

@@ -1,4 +1,4 @@
-5 weeks left in development, may not work as intended in this manual.
+2 weeks left in development, may not work as intended in this manual.
 
 1. run liisan_muistipeli.jar
 2. click face

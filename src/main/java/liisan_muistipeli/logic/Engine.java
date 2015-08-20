@@ -8,6 +8,7 @@ package liisan_muistipeli.logic;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  *
@@ -17,6 +18,8 @@ public final class Engine {
     
     private final PositionController pc;
     private Global global;
+    private int last_clicked_picture = 0;
+    private int last_clicked_card_id = 0;
     
     public Engine(Global global)
     {
@@ -30,54 +33,50 @@ public final class Engine {
     }
     
     
-    public Card click(int y, int x)
+    public Card check_if_click_inside_hitbox(int y, int x)
     {
         // täällä bugi, ei tarkista meneekö yli pelikentän ja rumaa koodia.
         
-        boolean inside_the_circle = false;
         boolean up = true;
         boolean down = true;
         Card found = null;
-        
         for (int i = 0; i < global.getCardsize(); i++) {
-            if (up)
+            if (up && pc.get_by_coordinates(y+i, x) != null)
             {
-                if(pc.get_by_coordinates(y+i, x) != null)
+                if (found == null)
                 {
-                    if (found == null) 
-                    {
-                        up = false;
-                        found = pc.get_by_coordinates(y+i, x);
-                    }
-                    else if (found == pc.get_by_coordinates(y+i, x))
-                    {
-                        inside_the_circle = true;
-                        break;
-                    }
-                }
+                    up = false;
+                    found = pc.get_by_coordinates(y+i, x);
+                } else if (found == pc.get_by_coordinates(y+i, x)) break;
             }
-            if (down)
+            if (down && pc.get_by_coordinates(y-1, x) != null)
             {
-                if(pc.get_by_coordinates(y-i, x) != null)
+                if (found == null)
                 {
-                    if (found == null)
-                    {
-                        down = false;
-                        found = pc.get_by_coordinates(y-i, x);
-                    } else if (found == pc.get_by_coordinates(y-i, x))
-                    {
-                        inside_the_circle = true;
-                        break;
-                    }
-                    
-                }
+                    down = false;
+                    found = pc.get_by_coordinates(y-i, x);
+                } else if (found == pc.get_by_coordinates(y-i, x)) break;
             }
         }
-        
-        if (inside_the_circle) return found;
-        else return null;
+        return found;
     }
-    
+
+    public Card click(int y, int x)
+    {
+        Card found = check_if_click_inside_hitbox(y, x);
+        
+        if (found != null) 
+        {
+            found.set_velocity(global.getDefaultStartSpeed());
+            found.set_angle((new Random().nextDouble())*Math.PI*2);
+            if (last_clicked_picture == found.pair_id()) {
+                pc.delete_card_permanent(found);
+                pc.delete_card_permanent((Card) pc.get_cards().get(last_clicked_picture));
+            }
+            last_clicked_picture = found.id();
+        }
+        return found;
+    }
     
     public PositionController getPC()
     {
@@ -102,8 +101,8 @@ public final class Engine {
             int y1 = sc.get(i+1)[0];
             int x1 = sc.get(i+1)[1];
             
-            int x_id = i;
-            int y_id = i+1;
+            int x_id = i+1;
+            int y_id = i+2;
             
             Picture picture = pictures.get(j);
             
