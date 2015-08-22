@@ -103,6 +103,14 @@ public final class Engine {
             Card instance0 = new Card(global, y0, x0, x_id, y_id, picture);
             Card instance1 = new Card(global, y1, x1, y_id, x_id, picture);
             
+            Random r = new Random();
+            
+            instance0.set_velocity(global.getDefaultStartSpeed());
+            instance1.set_velocity(global.getDefaultStartSpeed());
+            
+            instance0.set_angle(r.nextDouble()*2*Math.PI);
+            instance1.set_angle(r.nextDouble()*2*Math.PI);
+            
             pc.addCard(instance0);
             pc.addCard(instance1);
         }
@@ -158,7 +166,7 @@ public final class Engine {
         Collections.shuffle(all_picture_ids);
         
         for (int i = 0; i < global.getCardamount()/2; i++) {
-            Picture picture = new Picture(i, all_picture_ids.get(i)+".jpg");
+            Picture picture = new Picture(i, all_picture_ids.get(i)+"");
             pictures.add(picture);
         }
         return pictures;
