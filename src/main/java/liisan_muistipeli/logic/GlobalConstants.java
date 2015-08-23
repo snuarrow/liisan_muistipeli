@@ -6,7 +6,7 @@ package liisan_muistipeli.logic;
 
 public interface GlobalConstants
 {
-    int i_horizontalsize = 1024, i_verticalsize = 768, i_cardsize = 110;
+    int i_horizontalsize = 1024, i_verticalsize = 768, i_cardsize = 120;
 
     
     // not yet used but will be in near future

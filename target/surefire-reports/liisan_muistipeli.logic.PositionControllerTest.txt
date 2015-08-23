@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: liisan_muistipeli.logic.PositionControllerTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 sec
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 sec

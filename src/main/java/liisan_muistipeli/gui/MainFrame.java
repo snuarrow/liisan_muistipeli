@@ -12,7 +12,7 @@ import liisan_muistipeli.logic.Picture;
 /**
  * Graafinen käyttöliittymä engine luokan käyttämiseen. sisältää toiminnallisuutta mm. hiiren seuraamista ja ajastimien ylläpitoa. 
  */
-public class MainFrame extends JPanel implements ActionListener, MouseListener
+public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener
 {
     private Timer t;
     private int runtime;
@@ -25,9 +25,12 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener
     private int counter = 0;
     private int clicked_id = 0;
     private Card clicked = null;
+    private Button playbutton;
     
     public MainFrame(Global global)
     {
+        playbutton = new Button(100,100,300,100,96,"play");
+        
         image_display_time = -1;
         runtime = 0;
         picture = new Picture(0, "acid3tb.png");
@@ -37,6 +40,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener
         cards = engine.getCards();
         
         addMouseListener(this);
+        addMouseMotionListener(this);
         t = new Timer(global.getTimer_interval(), this);
         t.start();
     }
@@ -45,8 +49,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener
     public void actionPerformed(ActionEvent ae) {
         
         
-        
-        
+            
             if (runtime < Integer.MAX_VALUE) runtime += 1;
             repaint();
             
@@ -57,12 +60,16 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener
     }
     public void start_menu(Graphics2D g)
     {
-        Font font = new Font("Sherif", Font.PLAIN, 96);
-        g.setFont(font);
-        g.setColor(Color.yellow);
-        g.draw3DRect(70, 400, 600, 200, true);
-        
-        g.drawString("play", 100, 500);
+        //playbutton.setBackGroundColor(Color.darkGray);
+        //playbutton.setBorderColor(Color.GRAY);
+        //playbutton.setFontColor(Color.GRAY);
+        playbutton.draw(g);
+//        Font font = new Font("Sherif", Font.PLAIN, 96);
+//        g.setFont(font);
+//        g.setColor(Color.yellow);
+//        g.draw3DRect(70, 400, 600, 200, true);
+//        
+//        g.drawString("play", 100, 500);
     }
     
     
@@ -132,6 +139,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener
     }
     
     
+    
 
     @Override
     public void mouseClicked(MouseEvent me) {
@@ -174,11 +182,26 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener
 
     @Override
     public void mouseEntered(MouseEvent me) {
+        
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent me)
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent me)
+    {
+        if (me.getX() < 100) playbutton.setFontColor(Color.yellow);
+        else playbutton.setFontColor(Color.RED);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
