@@ -95,12 +95,33 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     
     public void show_picture(Graphics2D g)
     {
+        int upper_left_x = clicked.x()-(image_display_time/2);
+        int upper_left_y = (int) (clicked.y()-((image_display_time/2)*clicked.picture().ratio()));
+        int width = global.getCardsize()+image_display_time;
+        int height = (int) ((global.getCardsize()+ image_display_time)*clicked.picture().ratio());
+        
+        
+        
+        if (upper_left_x + width > global.getHorizontalsize())
+        {
+            int correction = upper_left_x + width - global.getHorizontalsize();
+            upper_left_x -= correction;
+        }
+        if (upper_left_y + height > global.getVerticalsize())
+        {
+            int correction = upper_left_y + height - global.getVerticalsize();
+            upper_left_y -= correction;
+        }
+        
+        if (upper_left_x < 0) upper_left_x = 0;
+        if (upper_left_y < 0) upper_left_y = 0;
+        
         g.drawImage(
                 clicked.picture().image(), //image
-                clicked.x()+global.getCardsize()/2-image_display_time/2, // upper left x
-                clicked.y()+global.getCardsize()/2-image_display_time/2, // upper left y
-                global.getCardsize()+image_display_time, // width
-                (int) ((global.getCardsize()+ image_display_time)*clicked.picture().ratio()), //height
+                upper_left_x, // upper left x
+                upper_left_y, // upper left y
+                width, // width
+                height, //height
                 this);
         image_display_time++;
         if (image_display_time > global.getImage_displaytime_ms()) image_display_time = -1;

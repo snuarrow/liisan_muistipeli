@@ -16,3 +16,5 @@
 20.8 1200 -> 2000 testien tekoa, bugien korjausta, sekvenssikaavioiden laatimista.
 22.8 2200 -> 0000 kuvat muistipeliin, käyttöliittymän tekoa.
 23.8 0000 -> 0300 aloitusvalikon aloitus, yksi luokka lisää
+24.8 2200 -> 0000 demoa varten hiontaa
+25.8 0000 -> 0300 demoa varten hiontaa

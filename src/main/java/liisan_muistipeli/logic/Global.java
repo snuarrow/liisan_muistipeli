@@ -9,10 +9,10 @@ import java.awt.Toolkit;
 
 public final class Global implements GlobalConstants
 {
-    private int defalut_start_speed, pictures_in_folder, horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
+    private int pictures_in_folder, horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
     
     //not used yet but will be in near future
-    private double acceleration;
+    private double acceleration, default_start_speed;
     
     
     public Global() //tested
@@ -25,7 +25,7 @@ public final class Global implements GlobalConstants
     }
     public void renew()
     {
-        this.defalut_start_speed = i_default_start_speed;
+        this.default_start_speed = i_default_start_speed;
         this.horizontalsize = i_horizontalsize;
         this.verticalsize = i_verticalsize;
         this.cardsize = i_cardsize;
@@ -52,9 +52,9 @@ public final class Global implements GlobalConstants
         if (horizontalamount*verticalamount % 2 != 0) cardamount = (horizontalamount*verticalamount)-1;
         else cardamount = horizontalamount*verticalamount;
     }
-    public int getDefaultStartSpeed()
+    public double getDefaultStartSpeed()
     {
-        return defalut_start_speed;
+        return default_start_speed;
     }
     
     public int getPicturesInFolder() { return this.pictures_in_folder; }
