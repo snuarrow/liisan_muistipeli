@@ -16,6 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author hexvaara
  */
+
+// kirjoita testi jossa kaks overläppää, toinen poistetaan, tuleeko vuotavia jne.
+
 public class HitBoxBoardTest
 {
     private Global g;
@@ -125,6 +128,11 @@ public class HitBoxBoardTest
         h.setCard(temp);
         h.setCard(temp2);
         assertEquals(0, h.checkCollision(temp2));
+    }
+    //@Test
+    public void test_overlapped_remove()
+    {
+      
     }
     @Test
     public void temp_test()
