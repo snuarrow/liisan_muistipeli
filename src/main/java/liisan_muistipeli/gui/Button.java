@@ -35,6 +35,22 @@ public class Button
         this.x = x;
         this.y = y;
     }
+    public int x()
+    {
+        return x;
+    }
+    public int y()
+    {
+        return y;
+    }
+    public int height()
+    {
+        return height;
+    }
+    public int width()
+    {
+        return width;
+    }
     public void setBackGroundColor(Color color)
     {
         backgroundcolor = color;

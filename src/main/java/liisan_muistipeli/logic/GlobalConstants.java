@@ -11,7 +11,7 @@ public interface GlobalConstants
     
     // not yet used but will be in near future
     double i_acceleration = 0.005;
-    int i_image_displaytime_ms = 500;
+    int i_image_displaytime_ms = 700;
     int i_image_zoomtime_ms = 700;
     int i_image_maxsize = 800;
     int i_fps = 60;

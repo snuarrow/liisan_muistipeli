@@ -29,7 +29,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     
     public MainFrame(Global global)
     {
-        playbutton = new Button(100,100,300,100,96,"play");
+        playbutton = new Button((int)(global.getHorizontalsize()*0.2),(int)(global.getVerticalsize()*0.7),global.getCardsize()*3,global.getCardsize(),global.getCardsize(),"play");
         
         image_display_time = -1;
         runtime = 0;
@@ -221,8 +221,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseMoved(MouseEvent me)
     {
-        if (me.getX() < 100) playbutton.setFontColor(Color.yellow);
-        else playbutton.setFontColor(Color.RED);
+        if (me.getX() > playbutton.x() && me.getY() > playbutton.y()-playbutton.height() && me.getY() < playbutton.y()) playbutton.setFontColor(Color.yellow);
+        else playbutton.setFontColor(Color.DARK_GRAY);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
