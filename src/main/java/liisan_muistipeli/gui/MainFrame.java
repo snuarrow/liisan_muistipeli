@@ -10,8 +10,11 @@ import liisan_muistipeli.logic.Global;
 import liisan_muistipeli.logic.Picture;
 
 /**
- * Graafinen käyttöliittymä engine luokan käyttämiseen. sisältää toiminnallisuutta mm. hiiren seuraamista ja ajastimien ylläpitoa. 
+ * Graafinen käyttöliittymä engine luokan käyttämiseen. sisältää toiminnallisuutta mm. hiiren seuraamista ja ajastimien ylläpitoa.
  */
+
+// rumaa koodia!! siisti demon jälkeen koko luokka.
+
 public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener
 {
     private Timer t;
@@ -48,18 +51,15 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        
-        
+    public void actionPerformed(ActionEvent ae) 
+    {
+        if (runtime < Integer.MAX_VALUE) runtime += 1;
+        repaint();
             
-            if (runtime < Integer.MAX_VALUE) runtime += 1;
-            repaint();
-            
-                counter++;
-                if (counter > 1000) counter = 0;
-            
-        
+        counter++;
+        if (counter > 1000) counter = 0;
     }
+    
     public void start_menu(Graphics2D g)
     {
         //playbutton.setBackGroundColor(Color.darkGray);
@@ -73,7 +73,6 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
 //        
 //        g.drawString("play", 100, 500);
     }
-    
     
     public void start_animation(Graphics2D g)
     {
@@ -278,8 +277,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseMoved(MouseEvent me)
     {
-        if (me.getX() > playbutton.x() && me.getY() > playbutton.y()-playbutton.height() && me.getY() < playbutton.y()) playbutton.setFontColor(Color.yellow);
+        if (me.getX() > playbutton.x() && me.getY() > playbutton.y()-playbutton.height() && me.getY() < playbutton.y() && me.getX() < playbutton.x()+playbutton.width()) playbutton.setFontColor(Color.yellow);
         else playbutton.setFontColor(Color.DARK_GRAY);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
