@@ -19,3 +19,4 @@
 24.8 2200 -> 0000 demoa varten hiontaa
 25.8 0000 -> 0100 demoa varten hiontaa
 25.8 0930 -> 1100 demoa varten hiontaa
+25.8 1200 -> 1400 demohiontaa

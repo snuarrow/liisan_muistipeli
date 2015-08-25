@@ -143,7 +143,7 @@ public class HitBoxBoardTest
         System.out.println("cardsize: "+g.getCardsize());
         h = new HitBoxBoard(g);
         Card temp = new Card(g,0,0,1,2,new Picture(0, "acid3.png"));
-        Card temp2 = new Card(g,4,4,2,1,new Picture(0, "acid3.png"));
+        Card temp2 = new Card(g,0,4,2,1,new Picture(0, "acid3.png"));
         h.setCard(temp);
         h.setCard(temp2);
         System.out.println("checkCollision temp2: "+h.checkCollision(temp2));

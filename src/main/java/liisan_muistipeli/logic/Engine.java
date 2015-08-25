@@ -57,6 +57,7 @@ public final class Engine {
 
     public Card click(int y, int x)
     {
+        pc.refresh_hitboxes_of_all_cards();
         Card found = check_if_click_inside_hitbox(y, x);
         
         if (found != null) 

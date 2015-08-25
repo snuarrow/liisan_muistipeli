@@ -24,6 +24,13 @@ public class PositionController
     {
         return ids;
     }
+    public void refresh_hitboxes_of_all_cards()
+    {
+        for (Integer id : ids)
+        {
+            hitboxboard.setCard(cards.get(id));
+        }
+    }
     public Card get_by_coordinates(int y, int x)
     {
         if (hitboxboard.checkCell(y, x) != 0)
