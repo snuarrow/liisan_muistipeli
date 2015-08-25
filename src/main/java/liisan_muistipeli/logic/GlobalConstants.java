@@ -11,9 +11,9 @@ public interface GlobalConstants
     
     // not yet used but will be in near future
     double i_acceleration = 0.005;
-    int i_image_displaytime_ms = 700;
+    int i_image_displaytime_ms = 200;
     int i_image_zoomtime_ms = 700;
-    int i_image_maxsize = 800;
+    int i_image_maxsize = 500;
     int i_fps = 60;
     int i_pictures_in_folder = 507;
     double i_default_start_speed = 1.5;
