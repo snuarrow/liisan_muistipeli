@@ -8,6 +8,7 @@ package liisan_muistipeli.gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -23,10 +24,12 @@ public class Button
     private String text;
     private Color backgroundcolor, fontcolor, bordercolor;
     private Font font;
+    private int click;
     
     
-    public Button(int x, int y, int width, int height, int fontsize, String text)
+    public Button(int x, int y, int width, int height, int fontsize, String text, int click)
     {
+        this.click = click;
         this.text = text;
         font = new Font("Sherif", Font.PLAIN, fontsize);
         this.fontsize = fontsize;
@@ -84,6 +87,23 @@ public class Button
     {
         g.setColor(backgroundcolor);
         g.fillRect(x, y, x+width, y+height);
+    }
+    public boolean mousehover(MouseEvent me)
+    {
+        if (me.getX() > x && me.getY() > y-height && me.getY() < y && me.getX() < x+width){
+            setFontColor(Color.yellow);
+            return true;
+        }
+        else 
+        {
+            setFontColor(Color.DARK_GRAY);
+            return false;
+        }
+    }
+    public int click()
+    {
+        System.out.println(click+" button clicked!");
+        return click;
     }
     
     
