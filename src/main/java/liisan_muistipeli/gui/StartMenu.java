@@ -5,6 +5,9 @@
  */
 package liisan_muistipeli.gui;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import liisan_muistipeli.logic.Global;
@@ -24,6 +27,13 @@ public class StartMenu
         buttons = new ArrayList<>();
         createPlayButton();
         createSettingsButton();
+    }
+    public void drawHeadline(Graphics2D g)
+    {
+        Font font = new Font("Sherif", Font.PLAIN, 80);
+        g.setFont(font);
+        g.setColor(Color.DARK_GRAY);
+        g.drawString("main menu", 100, 100);
     }
     
     public void createPlayButton()
@@ -52,7 +62,7 @@ public class StartMenu
         int fontsize = (int) (global.getHorizontalsize()*0.05);
         
         
-        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "settings", 0));
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "settings", 2));
     }
     
     

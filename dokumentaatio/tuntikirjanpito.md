@@ -20,3 +20,6 @@
 25.8 0000 -> 0100 demoa varten hiontaa
 25.8 0930 -> 1100 demoa varten hiontaa
 25.8 1200 -> 1400 demohiontaa
+25.8 2200 -> 0000 alkuvalikon parantelua, mainframe luokan siistimistä
+26.8 1000 -> 1200 alkuvalikon parantelua, mainframe luokan siistimistä, start_menu luokka lisää
+26.8 1300 -> 1500 settings_menu luokka lisää, nyt toimii valikkojen nappulat

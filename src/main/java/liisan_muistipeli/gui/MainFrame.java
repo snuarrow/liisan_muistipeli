@@ -15,10 +15,9 @@ import liisan_muistipeli.logic.Picture;
 
 // rumaa koodia!! siisti demon jälkeen koko luokka.
 
-public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener
+public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener
 {
     private Timer t;
-    private int runtime;
     private Engine engine;
     private Global global;
     private HashMap cards;
@@ -28,6 +27,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     private Card clicked = null;
     private int image_zoom_time;
     private StartMenu startmenu;
+    private SettingsMenu settingsmenu;
     
     private int gamestate; // 0 = startmenu, 1 = in game, 2 = in settings menu
     
@@ -36,16 +36,18 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         gamestate = 0;
         
         startmenu = new StartMenu(global);
+        settingsmenu = new SettingsMenu(global);
+        
         
         image_zoom_time = 0;
         image_display_time = -1;
-        runtime = 0;
         smiley = new Picture(0, "acid3tb.png");
         background = new Picture(0, "background.png");
         this.global = global;
         engine = new Engine(global);
         cards = engine.getCards();
         
+        addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
         t = new Timer(global.getTimer_interval(), this);
@@ -55,7 +57,6 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-        if (runtime < Integer.MAX_VALUE) runtime += 1;
         repaint();
     }
     
@@ -63,35 +64,47 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     {
         g.drawImage(new Picture(0, "pluto.gif").image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize(), this);
         
+        startmenu.drawHeadline(g);
+        
         for (Button button : startmenu.buttons())
         {
             button.draw(g);
         }
+    }
+    public void settings_menu(Graphics2D g)
+    {
+        g.drawImage(new Picture(0, "pluto.gif").image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize(), this);
         
-
+        settingsmenu.drawHeadline(g);
+        settingsmenu.showCurrentResolution(g);
+        
+        for (Button button : settingsmenu.buttons())
+        {
+            button.draw(g);
+        }
+        
+        
     }
     
     public void in_game(Graphics2D g)
     {
+        g.drawImage(background.image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize() ,this);
         
-            g.drawImage(background.image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize() ,this);
-        
-            for (int id : engine.getPC().getIds())
-            {
-                Card instance = engine.getCards().get(id);
-                g.drawImage(smiley.image(), instance.x() , instance.y(), global.getCardsize(), global.getCardsize(), this);
-            }
-        
+        for (int id : engine.getPC().getIds())
+        {
+            Card instance = engine.getCards().get(id);
+            g.drawImage(smiley.image(), instance.x() , instance.y(), global.getCardsize(), global.getCardsize(), this);
+        }
     }
     
-    private int show_picture_state = 0;
+    private int show_picture_state = 0; // 0 = in zoom period, 1 = fully zoomed
     private int upper_left_x;
     private int upper_left_y;
     private int width;
     private int height;
     
     
-    public void show_picture(Graphics2D g)
+    public void show_picture(Graphics2D g)  // tämä funktio kaipaa siistimistä, rumat luokkamuuttujat, keksi jotain.
     {
         if (show_picture_state == 0) // in zoom period
         {
@@ -119,7 +132,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
             if (upper_left_x < 0) upper_left_x = 0;
             if (upper_left_y < 0) upper_left_y = 0;
         }
-        else if (show_picture_state == 1) 
+        else if (show_picture_state == 1) // fully opened
         {
             image_display_time++;
             if (image_display_time > global.getImage_displaytime_ms()) image_display_time = -1;
@@ -139,7 +152,6 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void paintComponent(Graphics g)
     {
-        
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
@@ -153,31 +165,11 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                     if (image_display_time >= 0) show_picture(g2);
                     else engine.iteration();
                 } break;
-            
-        }
-        
-        
-//        if (runtime < 1000)
-//        {
-//            //start_animation(g2);
-//            start_menu(g2);
-//        }
-//        else
-//        {
-//            
-//            in_game(g2);
-//            if (image_display_time >= 0)
-//            {
-//                show_picture(g2);
-//            } else {
-//                engine.iteration();
-//            }
-//        }        
+            case 2 : settings_menu(g2);
+                break;
+        }        
     }
     
-    
-    
-
     @Override
     public void mouseClicked(MouseEvent me) {
         
@@ -203,6 +195,18 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         }
                         else System.out.println("null");
                     } break;
+            case 2 : 
+                    {
+                        Button button = settingsmenu.mouseclicked(me);
+                        
+                        int click = button.click();
+                        if (click > 0)
+                        {
+                            if (click == 10) settingsmenu.changeResolution();
+                          
+                          
+                        } else if (click == 0) this.setSize(800, 600);
+                    }
         }
         
     }
@@ -237,6 +241,31 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseMoved(MouseEvent me)
     {
-        startmenu.mousehover(me);
+        if (gamestate == 0) startmenu.mousehover(me);
+        if (gamestate == 2) settingsmenu.mousehover(me);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke)
+    {
+        System.out.println("key pressed");
+        if (ke.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            System.out.println("enter pressed");
+            gamestate = 0;
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke)
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke)
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
