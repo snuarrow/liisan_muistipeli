@@ -54,6 +54,12 @@ public class EngineTest
     {
         assertEquals(g.getCardamount(), e.getPC().getIds().size());
     }
+    @Test
+    public void test_click()
+    {
+        assertNotNull(e.click(g.getClearance(), g.getClearance()));
+    }
+             
 
     /**
      * Test of getCards method, of class Engine.
