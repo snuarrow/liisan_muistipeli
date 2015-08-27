@@ -11,7 +11,8 @@ import liisan_muistipeli.gui.MainFrame;
 import liisan_muistipeli.logic.Global;
 
 /**
- *
+ * Ei käytössä vielä!!!
+ * 
  * @author hexvaara
  */
 public class GameStarter

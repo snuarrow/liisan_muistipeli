@@ -25,7 +25,15 @@ public final class Engine {
     {
         return pc.get_cards();
     }
-    
+    /**
+     * kun korttia klikataan, selvittää tämä funktio, onko klikkaus kortin hitboksin sisäpuolella,
+     * lähtee algoritmisesti klikkauspisteestä kahteen suuntaan ja mikäli molemmissa suunnissa
+     * vastaan tulee sama id, ollaan kortin sisäpuolella, muuten ei. palautetaan kortti tai null.
+     * 
+     * @param y koordinaatti
+     * @param x koordinaatti
+     * @return kortti tai null
+     */
     
     public Card check_if_click_inside_hitbox(int y, int x)
     {
@@ -54,7 +62,15 @@ public final class Engine {
         }
         return found;
     }
-
+    
+    /**
+     * Kortin klikkaus, tarkistaa onko klikattu taustaa vai korttia, asettaa kortille
+     * nopeuden ja satunnaisen lähtökulman välillä 0-360 astetta.
+     * 
+     * @param y
+     * @param x
+     * @return kortti jota klikattiin, null jos ei osunut.
+     */
     public Card click(int y, int x)
     {
         pc.refresh_hitboxes_of_all_cards();
@@ -77,6 +93,15 @@ public final class Engine {
     {
         return pc;
     }
+    
+    /**
+     * pelimoottorin yksi iteraatio, käy kortit läpi ja liikuttaa niitä joilla on
+     * velocityä, mikäli millään ei ole, palauttaa false, jolloin pelimoottori voidaan
+     * pysäyttää hetkellisesti idle rasituksen välttämiseksi.
+     * 
+     * @return liikkuuko joku
+     */
+    
     public boolean iteration() // moves all cards which have velocity, if none has, returns false.
     {
         boolean returnvalue = false;
@@ -85,6 +110,12 @@ public final class Engine {
         }
         return returnvalue;
     }
+    
+    /**
+     * Pelin alkaessa luo joukon kuvallisia kortteja ja antaa ne position controllerille.
+     * kortteja luodaan parillinen määrä ja yksi kuva kahta korttia kohden.
+     */
+    
     public void create_paired_Cards()
     {
         ArrayList<int[]> sc = startcoordinates();
@@ -120,6 +151,12 @@ public final class Engine {
         
         
     }
+    /**
+     * palauttaa sekoitetun aloitusjärjestyksen korteille.
+     * 
+     * @return 
+     */
+    
     private ArrayList startcoordinates() // returns shuffled start coordinate matrix
     {
         int a = 0;
@@ -157,6 +194,11 @@ public final class Engine {
         
         return returnarray;
     }
+    
+    /**
+     * noukkii kuvakansiosta satunnaisesti valitun kuvajoukon jonka koko on puolet korttien määrästä.
+     * @return 
+     */
     private ArrayList<Picture> pick_pictures() // picks cardamount/2 random pics from images folder
     {
         ArrayList<Integer> all_picture_ids = new ArrayList<>();

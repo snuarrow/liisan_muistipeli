@@ -14,9 +14,12 @@ public class HitBoxBoard
         g = global;
         board = new int[g.getVerticalsize()][g.getHorizontalsize()];
         memset(0);
-        
-        
     }
+    
+    /**
+     * alustaa taulukon arvolla c
+     * @param c 
+     */
     public void memset(int c) 
     {
         for (int y = 0; y < g.getY_max_index(); y++)
@@ -27,7 +30,11 @@ public class HitBoxBoard
             }
         }
     } // write every cell in board with c.
-
+    
+    /**
+     * piirtää matriisiin onton neliön kortin id:tä
+     * @param card 
+     */
     public void setCard(Card card) // piirtää laudalle onton neliön kortin id:tä
     {
         for (int i = 0; i < g.getCardsize(); i++)
@@ -56,6 +63,11 @@ public class HitBoxBoard
             ratkaise matikka, ei oo amerikantemppu.
         */
     }
+    
+    /**
+     * poistaa matriisista kortin id:t
+     * @param card 
+     */
     public void delCard(Card card) // poistaa kortin id:t
     {
         for (int i = 0; i < g.getCardsize(); i++)
@@ -66,7 +78,13 @@ public class HitBoxBoard
             if (board[card.y()+i][card.x()+g.getCardsize()-1] == card.id()) board[card.y()+i][card.x()+g.getCardsize()-1] = 0;
         }
     }
-    public int checkCollision(Card card) // tarkistaa onko joku kortin id:stä toisen kortin id, eli on törmännyt
+    
+    /**
+     * tarkistaa onko joku kortin id:stä toisen kortin id, eli on törmännyt
+     * @param card
+     * @return 
+     */
+    public int checkCollision(Card card)
     {
         // tän vois laittaa palauttamaan taulukon iideitä, mikäli osuu useampaan samanaikaisesti, mut ekan version fysiikka tulee olee basic
         
@@ -84,7 +102,10 @@ public class HitBoxBoard
         return board[y][x];
     }
     
-    public void print() // this function for debugging only
+    /**
+     * tämä funktio vain debuggausta varten
+     */
+    public void print()
     {
         for (int y = 0; y < g.getVerticalsize(); y++) {
             for (int x = 0; x < g.getHorizontalsize(); x++) {

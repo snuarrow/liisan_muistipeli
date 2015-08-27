@@ -60,6 +60,10 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         repaint();
     }
     
+    /**
+     * renderöi aloitusvalikon näkymän
+     * @param g 
+     */
     public void start_menu(Graphics2D g)
     {
         g.drawImage(new Picture(0, "pluto.gif").image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize(), this);
@@ -71,6 +75,11 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
             button.draw(g);
         }
     }
+    
+    /**
+     * renderöi asetusvalikon näkymän
+     * @param g 
+     */
     public void settings_menu(Graphics2D g)
     {
         g.drawImage(new Picture(0, "pluto.gif").image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize(), this);
@@ -86,6 +95,10 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         
     }
     
+    /**
+     * renderöi pelinäkymän
+     * @param g 
+     */
     public void in_game(Graphics2D g)
     {
         g.drawImage(background.image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize() ,this);
@@ -103,7 +116,10 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     private int width;
     private int height;
     
-    
+    /**
+     * piirtää zoomautuvan kuvan
+     * @param g 
+     */
     public void show_picture(Graphics2D g)  // tämä funktio kaipaa siistimistä, rumat luokkamuuttujat, keksi jotain.
     {
         if (show_picture_state == 0) // in zoom period
@@ -138,15 +154,15 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
             if (image_display_time > global.getImage_displaytime_ms()) image_display_time = -1;
         }
         
-        
-        
-        g.drawImage(
-        clicked.picture().image(), //image
-        upper_left_x, // upper left x
-        upper_left_y, // upper left y
-        width, // width
-        height, //height
-        this);
+        g.drawImage
+        (
+            clicked.picture().image(), //image
+            upper_left_x, // upper left x
+            upper_left_y, // upper left y
+            width, // width
+            height, //height
+            this
+        );
     }
     
     @Override
@@ -202,13 +218,15 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         int click = button.click();
                         if (click > 0)
                         {
-                            if (click == 10) settingsmenu.changeResolution();
+                            if (click == 10) settingsmenu.changeResolution(); // change resolution button clicked
                           
                           
-                        } else if (click == 0) this.setSize(800, 600);
+                        } else if (click == 0) // return button clicked 
+                        {
+                            gamestate = 0;
+                        }
                     }
         }
-        
     }
 
     @Override
@@ -249,23 +267,22 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     public void keyTyped(KeyEvent ke)
     {
         System.out.println("key pressed");
-        if (ke.getKeyCode() == KeyEvent.VK_ENTER)
+        if (ke.getKeyCode() == KeyEvent.VK_ESCAPE)
         {
-            System.out.println("enter pressed");
+            System.out.println("esc pressed");
             gamestate = 0;
         }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke)
     {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void keyReleased(KeyEvent ke)
     {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }

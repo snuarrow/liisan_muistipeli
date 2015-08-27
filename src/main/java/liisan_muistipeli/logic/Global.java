@@ -23,6 +23,10 @@ public final class Global implements GlobalConstants
         refresh();
         
     }
+    
+    /**
+     * lataa globaalit oletusarvot global constants rajapinnasta.
+     */
     public void renew()
     {
         this.default_start_speed = i_default_start_speed;
@@ -35,9 +39,12 @@ public final class Global implements GlobalConstants
         this.image_maxsize = i_image_maxsize;
         this.fps = i_fps;
         this.pictures_in_folder = i_pictures_in_folder;
+        refresh();
     }
     
-    
+    /**
+     * luo johdetut attribuutit jotka helpottavat koodin luettavuutta.
+     */
     public void refresh() //tested
     {
         timer_interval = 1000/fps;
@@ -202,5 +209,4 @@ public final class Global implements GlobalConstants
         this.acceleration = acceleration;
         refresh();
     }
-    
 }

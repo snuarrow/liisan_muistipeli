@@ -88,6 +88,12 @@ public class Button
         g.setColor(backgroundcolor);
         g.fillRect(x, y, x+width, y+height);
     }
+    
+    /**
+     * tarkistaa onko hiiri napin päällä.
+     * @param me
+     * @return true/false mikäli hiiri napin päällä
+     */
     public boolean mousehover(MouseEvent me)
     {
         if (me.getX() > x && me.getY() > y-height && me.getY() < y && me.getX() < x+width){
@@ -100,9 +106,14 @@ public class Button
             return false;
         }
     }
+    
+    /**
+     * palauttaa klikkauksen id:n, jotta tiedetään mitä nappia on painettu
+     * @return klikatun painikkeen "id"
+     */
     public int click()
     {
-        System.out.println(click+" button clicked!");
+        System.out.println(click+" button clicked!"); // tää poistettava lopullisessa palautuksessa.
         return click;
     }
     
