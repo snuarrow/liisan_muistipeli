@@ -18,22 +18,21 @@ import liisan_muistipeli.logic.Picture;
 
 public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener
 {
-    private Timer t;
+    private final Timer t;
     private Engine engine;
-    private Global global;
-    private HashMap cards;
-    private Picture smiley;
-    private Picture background;
+    private final Global global;
+    private final Picture smiley;
+    private final Picture background;
     private int image_display_time;
     private Card clicked = null;
     private int image_zoom_time;
-    private StartMenu startmenu;
-    private SettingsMenu settingsmenu;
-    private EndMenu endmenu;
+    private final StartMenu startmenu;
+    private final SettingsMenu settingsmenu;
+    private final EndMenu endmenu;
     
     private int card_clicks;
     private int gamestate; // 0 = startmenu, 1 = in game, 2 = in settings menu
-    private GameStarter gamestarter;
+    private final GameStarter gamestarter;
     
     
     public MainFrame(Global global, GameStarter gamestarter)
@@ -53,7 +52,6 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         background = new Picture(0, "background.png");
         this.global = global;
         engine = new Engine(global);
-        cards = engine.getCards();
         
         
         addKeyListener(this);
@@ -101,9 +99,12 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         {
             button.draw(g);
         }
-        
-        
     }
+    
+    /**
+     * renderöi pelin päättymisvalikon näkymän
+     * @param g 
+     */
     public void end_menu(Graphics2D g)
     {
         g.drawImage(new Picture(0, "pluto.gif").image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize(), this);
@@ -240,6 +241,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                     } break;
             case 2 : 
                     {
+                        // <--------------------------------------------------------------------------------------------------------------------switch case tänne!
+                      
                         Button button = settingsmenu.mouseclicked(me);
                         
                         int click = button.click();
@@ -275,41 +278,29 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         engine = new Engine(global);
                         image_zoom_time = 0;
                         image_display_time = -1;
-                        //cards = engine.getCards();
                     }
         }
     }
 
     @Override
-    public void mousePressed(MouseEvent me) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mousePressed(MouseEvent me) {}
 
     @Override
-    public void mouseReleased(MouseEvent me) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mouseReleased(MouseEvent me) {}
 
     @Override
-    public void mouseEntered(MouseEvent me) {
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mouseEntered(MouseEvent me) {}
 
     @Override
-    public void mouseExited(MouseEvent me) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mouseExited(MouseEvent me) {}
 
     @Override
-    public void mouseDragged(MouseEvent me)
-    {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mouseDragged(MouseEvent me) {}
 
     @Override
     public void mouseMoved(MouseEvent me)
     {
+        // <-----------------------------------------------------------------switch case tänne!
         if (gamestate == 0) startmenu.mousehover(me);
         if (gamestate == 2) settingsmenu.mousehover(me);
         if (gamestate == 3) endmenu.mousehover(me);
@@ -318,6 +309,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void keyTyped(KeyEvent ke)
     {
+        // <-------------------------------------------------------------------ei toimi, miksei?
+        
         System.out.println("key pressed");
         if (ke.getKeyCode() == KeyEvent.VK_ESCAPE)
         {
@@ -327,14 +320,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     }
 
     @Override
-    public void keyPressed(KeyEvent ke)
-    {
-        
-    }
+    public void keyPressed(KeyEvent ke) {}
 
     @Override
-    public void keyReleased(KeyEvent ke)
-    {
-        
-    }
+    public void keyReleased(KeyEvent ke) {}
 }

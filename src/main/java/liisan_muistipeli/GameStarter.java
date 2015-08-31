@@ -11,9 +11,7 @@ import liisan_muistipeli.gui.MainFrame;
 import liisan_muistipeli.logic.Global;
 
 /**
- * Ei käytössä vielä!!!
- * 
- * @author hexvaara
+ * Starts and closes JFrame, used to restart game after altering settings.
  */
 public class GameStarter
 {

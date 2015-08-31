@@ -27,11 +27,11 @@ public class Button
     private int click;
     
     
-    public Button(int x, int y, int width, int height, int fontsize, String text, int click)
+    public Button(int x, int y, int width, int height, int fontsize, String text, int click, Font font)
     {
         this.click = click;
         this.text = text;
-        font = new Font("Sherif", Font.PLAIN, fontsize);
+        this.font = font;
         this.fontsize = fontsize;
         this.height = height;
         this.width = width;

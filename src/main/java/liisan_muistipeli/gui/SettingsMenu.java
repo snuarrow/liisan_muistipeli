@@ -27,8 +27,24 @@ public class SettingsMenu
     private String[] difficulties;
     private int difficulties_index;
     
+    
+    //alignment variables
+    private int column0_from_left;
+    private int column1_from_left;
+    private int headline_fontsize;
+    private int fontsize;
+    private Font headline_font;
+    private Font font;
+    
     public SettingsMenu(Global global)
     {
+        column0_from_left = (int) (global.getVerticalsize()*0.2);
+        column1_from_left = (int) (global.getVerticalsize()*0.7);
+        headline_fontsize = 40;
+        fontsize = 24;
+        font = new Font("Monospaced", Font.PLAIN, fontsize);
+        headline_font = new Font("Monospaced", Font.PLAIN, headline_fontsize);
+        
         resolutions = new int[5][2];
         
         resolutions[0][0] = 1024;
@@ -76,65 +92,65 @@ public class SettingsMenu
     }
     public void drawHeadline(Graphics2D g)
     {
-        Font font = new Font("Monospaced", Font.PLAIN, 80);
-        g.setFont(font);
+        //Font font = new Font("Monospaced", Font.PLAIN, 80);
+        g.setFont(headline_font);
         g.setColor(Color.DARK_GRAY);
-        g.drawString("settings", 100, 100);
+        g.drawString("muistipeli/settings", 100, 100);
     }
     public void createDifficultyButton()
     {
-        int fromleft = (int) (global.getHorizontalsize()*0.6);
-        int fromtop = (int) (global.getVerticalsize()*0.2);
+        int fromleft = column0_from_left;
+        int fromtop = (int) (global.getVerticalsize()*0.5);
         
         int width = (int) (global.getVerticalsize()*0.25);
-        int height = (int) (global.getVerticalsize()*0.1);
+        int height = (int) (global.getVerticalsize()*0.03);
         
-        int fontsize = (int) (global.getHorizontalsize()*0.07);
+        //int fontsize = (int) (global.getHorizontalsize()*0.07);
         
         
-        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "difficulty", 12));
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "difficulty", 12, font));
     }
     public void createReturnButton()
     {
         // skalaarit pitäis jotenki järkeistää, eli ei kovakoodata.
         
-        int fromleft = (int) (global.getHorizontalsize()*0.2);
+        int fromleft = column0_from_left;
         int fromtop = (int) (global.getVerticalsize()*0.7);
         
         int width = (int) (global.getVerticalsize()*0.25);
-        int height = (int) (global.getVerticalsize()*0.1);
+        int height = (int) (global.getVerticalsize()*0.03);
         
-        int fontsize = (int) (global.getHorizontalsize()*0.07);
+        //int fontsize = (int) (global.getHorizontalsize()*0.07);
         
         
-        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "return", 0));
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "return", 0, font));
     }
     
     public void createSetResolutionButton()
     {
-        int fromleft = (int) (global.getHorizontalsize()*0.2);
-        int fromtop = (int) (global.getVerticalsize()*0.4);
+        int fromleft = column0_from_left;
+        int fromtop = (int) (global.getVerticalsize()*0.6);
         
         int width = (int) (global.getVerticalsize()*0.25);
-        int height = (int) (global.getVerticalsize()*0.1);
+        int height = (int) (global.getVerticalsize()*0.03);
         
-        int fontsize = (int) (global.getHorizontalsize()*0.03);
+        //int fontsize = (int) (global.getHorizontalsize()*0.03);
         
         
-        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "change resolution", 10));
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "resolution", 10, font));
     }
     public void createApplyButton()
     {
-        int fromleft = (int) (global.getHorizontalsize()*0.2);
-        int fromtop = (int) (global.getVerticalsize()*0.9);
+        int fromleft = column0_from_left;
+        int fromtop = (int) (global.getVerticalsize()*0.8);
         
         int width = (int) (global.getVerticalsize()*0.25);
-        int height = (int) (global.getVerticalsize()*0.1);
+        int height = (int) (global.getVerticalsize()*0.03);
         
-        int fontsize = (int) (global.getHorizontalsize()*0.03);
+        //int fontsize = (int) (global.getHorizontalsize()*0.03);
         
         
-        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "apply", 11));
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "apply", 11, font));
     }
     public void showCurrentResolution(Graphics2D g)
     {
@@ -142,8 +158,8 @@ public class SettingsMenu
         Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
         g.setFont(font);
         
-        int fromleft = (int) (global.getHorizontalsize()*0.6);
-        int fromtop = (int) (global.getVerticalsize()*0.5);
+        int fromleft = (int) column1_from_left;
+        int fromtop = (int) (global.getVerticalsize()*0.6);
         
         
         g.drawString(reso, fromleft , fromtop);
@@ -151,11 +167,11 @@ public class SettingsMenu
     public void showCurrentDifficulty(Graphics2D g)
     {
         String difficulty = difficulties[difficulties_index];
-        Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
+        //Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
         g.setFont(font);
         
-        int fromleft = (int) (global.getHorizontalsize()*0.6);
-        int fromtop = (int) (global.getVerticalsize()*0.4);
+        int fromleft = column1_from_left;
+        int fromtop = (int) (global.getVerticalsize()*0.5);
         g.drawString(difficulty, fromleft , fromtop);
     }
     public void changeDifficulty()
