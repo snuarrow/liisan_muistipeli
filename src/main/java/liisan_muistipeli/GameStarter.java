@@ -34,6 +34,7 @@ public class GameStarter
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(global.getHorizontalsize(), global.getVerticalsize());
+        f.setLocationRelativeTo(null);
     }
     public void closeFrame()
     {

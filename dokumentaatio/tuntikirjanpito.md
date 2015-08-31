@@ -27,3 +27,4 @@
 30.8 2100 -> 2300 koodikatselmointi
 31.8 1300 -> 1600 puuttuvia testejä ja bugien korjailua
 31.8 2100 -> 0000 loppuvalikko, gamestarter luokka, settings menun täydennystä ja toiminnallisuuden tekoa.
+1.9 0000 -> 0300 valikoiden siistimistä

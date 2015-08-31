@@ -29,10 +29,15 @@ public class EndMenu
     }
     public void drawScore(Graphics2D g, int score)
     {
-        Font font = new Font("Sherif", Font.PLAIN, 80);
+        int fromleft = 100;
+        int fromtop = 100;
+        int fontsize = 80;
+        
+        Font font = new Font("Sherif", Font.PLAIN, fontsize);
         g.setFont(font);
         g.setColor(Color.yellow);
-        g.drawString("score: "+score+"%", 100, 100);
+        if (score < 100) g.drawString("score: "+score+"%", fromleft, fromtop);
+
     }
     public void createToMainMenuButton()
     {
