@@ -122,6 +122,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
      */
     public void show_picture(Graphics2D g)  // tämä funktio kaipaa siistimistä, rumat luokkamuuttujat, keksi jotain.
     {
+        
         if (show_picture_state == 0) // in zoom period
         {
             image_zoom_time += 20;

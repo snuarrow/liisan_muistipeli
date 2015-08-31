@@ -1,6 +1,7 @@
 package liisan_muistipeli.logic;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,6 +16,9 @@ public class Picture
     {
         this.id = id;
         image = new ImageIcon("src/main/resources/images/"+filename).getImage();
+        
+        
+        
         
     }
     public Image image() { return image; }

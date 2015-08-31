@@ -114,31 +114,274 @@ public class PositionControllerTest
         assertNull(pc.get_by_coordinates(0, 0));
     }
     @Test
-    public void test_simple_ping_against_left_wall()
-    {
-        c.set_angle(1.5*Math.PI);
-        c.set_velocity(1);
-        pc.ping_against_the_wall(c);
-        assertEquals(Math.PI/2, c.angle(), 0.001);
-    }
-    @Test
     public void test_collide_simple_left()
     {
         g.setCardsize(5);
-        Card temp1 = new Card(g, 0,0,1,2, new Picture(0, "acid3.png"));
-        Card temp2 = new Card(g, 0,4,1,2, new Picture(0, "acid3.png"));
-        temp1.set_angle(Math.PI/2);
-        temp1.set_velocity(1);
-        temp2.set_angle(0);
-        temp2.set_velocity(0);
-        pc.addCard(temp2);
-        pc.addCard(temp1);
-        pc.collide(temp1, temp2);
-        assertEquals(0, temp1.angle(), 0.01);
-        assertEquals(0, temp1.velocity(), 0.01);
-        assertEquals(1, temp2.velocity(), 0.01);
-        //assertEquals(Math.PI/2, temp2.angle(), 0.01);  // <--------------------------------------------------------------------------------------this bugs
+        Card moving = new Card(g, 0,0,1,2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 0,4,1,2, new Picture(0, "acid3.png"));
+        moving.set_angle(Math.PI/2);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin left");
+        pc.collide(moving, still);
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(Math.PI/2, still.angle(), 0.01);  
+        System.out.println("end");
     }
+    @Test
+    public void test_collide_simple_right()
+    {
+        g.setCardsize(5);
+        Card moving = new Card(g, 0, 5, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 0, 1, 1, 2, new Picture(0, "acid3.png")); 
+        
+        // m.x > s.x, m.y = s.y
+        
+        moving.set_angle((3/2)*Math.PI);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin right");
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(1.5*Math.PI, still.angle(), 0.01); 
+    }
+    
+    @Test public void test_collide_simple_down()
+    {
+        g.setCardsize(5);
+        Card moving = new Card(g, 0, 0, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 4, 0, 1, 2, new Picture(0, "acid3.png")); 
+        
+        // m.x = s.x, m.y < s.y
+        
+        moving.set_angle(0);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin down");
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(0, still.angle(), 0.01);
+    }
+    @Test
+    public void test_collide_simple_up()
+    {
+        g.setCardsize(5);
+        Card moving = new Card(g, 5, 0, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 1, 0, 1, 2, new Picture(0, "acid3.png")); 
+        
+        // m.x = s.x, m.y > s.y
+        
+        moving.set_angle(Math.PI);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin up");
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(Math.PI, still.angle(), 0.01);
+    }
+    @Test
+    public void test_collide_south_east()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card moving = new Card(g, 0, 0, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 4, 4, 2, 1, new Picture(0, "acid3.png")); 
+        
+        // m.x < s.x, m.y < s.y
+        
+        moving.set_angle(0.25*Math.PI);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin south east");
+        pc.getHitBoxBoard().print();
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(0.25*Math.PI, still.angle(), 0.01);
+    }
+    @Test
+    public void test_collide_north_west()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card moving = new Card(g, 5, 5, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 1, 1, 2, 1, new Picture(0, "acid3.png")); 
+        
+        
+        
+        moving.set_angle(1.25*Math.PI);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin north west");
+        pc.getHitBoxBoard().print();
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(1.25*Math.PI, still.angle(), 0.01);
+    }
+    @Test
+    public void test_collide_north_east()
+    {
+        g.setHorizontalsize(11);
+        g.setVerticalsize(11);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card moving = new Card(g, 5, 0, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 1, 4, 2, 1, new Picture(0, "acid3.png")); 
+        
+        
+        
+        moving.set_angle(0.75*Math.PI);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin north east");
+        pc.getHitBoxBoard().print();
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(0.75*Math.PI, still.angle(), 0.01);
+    }
+    @Test
+    public void test_collide_south_west()
+    {
+        g.setHorizontalsize(11);
+        g.setVerticalsize(11);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card moving = new Card(g, 1, 5, 1, 2, new Picture(0, "acid3.png"));
+        Card still = new Card(g, 5, 1, 2, 1, new Picture(0, "acid3.png")); 
+        
+        
+        
+        moving.set_angle(1.75*Math.PI);
+        moving.set_velocity(1);
+        still.set_angle(0);
+        still.set_velocity(0);
+        pc.addCard(still);
+        pc.addCard(moving);
+        System.out.println("begin south west");
+        pc.getHitBoxBoard().print();
+        pc.collide(moving, still);
+        System.out.println("end");
+        assertEquals(0, moving.angle(), 0.01);
+        assertEquals(0, moving.velocity(), 0.01);
+        assertEquals(1, still.velocity(), 0.01);
+        assertEquals(1.75*Math.PI, still.angle(), 0.01);
+    }
+    @Test
+    public void test_ping_top_up()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card card = new Card(g, 0, 1, 1, 2, new Picture(0, "acid3.png"));
+        card.set_velocity(1);
+        card.set_angle(Math.PI);
+        pc.addCard(card);
+        
+        pc.move_card(1);
+        
+        assertEquals(0, card.angle(), 0.01);
+    }
+    @Test
+    public void test_ping_left_left()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card card = new Card(g, 1, 0, 1, 2, new Picture(0, "acid3.png"));
+        card.set_velocity(1);
+        card.set_angle(1.5*Math.PI);
+        pc.addCard(card);
+        
+        pc.move_card(1);
+        
+        assertEquals(0.5*Math.PI, card.angle(), 0.01);
+    }
+    @Test
+    public void test_ping_down_down()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card card = new Card(g, 5, 1, 1, 2, new Picture(0, "acid3.png"));
+        card.set_velocity(1);
+        card.set_angle(0);
+        pc.addCard(card);
+        
+        //System.out.println("test_ping_down_down");
+        //pc.getHitBoxBoard().print();
+        
+        pc.move_card(1);
+        
+        assertEquals(Math.PI, card.angle(), 0.01);
+    }
+    @Test
+    public void test_ping_right_right()
+    {
+        g.setHorizontalsize(10);
+        g.setVerticalsize(10);
+        g.setCardsize(5);
+        pc = new PositionController(g);
+        Card card = new Card(g, 1, 5, 1, 2, new Picture(0, "acid3.png"));
+        card.set_velocity(1);
+        card.set_angle(0.5*Math.PI);
+        pc.addCard(card);
+        
+        System.out.println("test_ping_right_right");
+        pc.getHitBoxBoard().print();
+        
+        pc.move_card(1);
+        
+        assertEquals(1.5*Math.PI, card.angle(), 0.01);
+    }
+    
+    
     
 
     /**

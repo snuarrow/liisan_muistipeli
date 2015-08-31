@@ -24,6 +24,10 @@ public class PositionController
     {
         return ids;
     }
+    public HitBoxBoard getHitBoxBoard()
+    {
+        return hitboxboard;
+    }
     
     /**
      * korjaa korttien hitboksit, mikäli niihin on törmäyksien jälkeen jäänyt reikiä.
@@ -104,9 +108,9 @@ public class PositionController
         
             if (!card.set_yx(y, x))
             {
-                System.out.println("ping_against_the_wall() was called!");
-                card.set_angle(card.angle()-Math.PI);
-                //ping_against_the_wall(card);
+                //System.out.println("ping_against_the_wall() was called!");
+                //card.set_angle(card.angle()-Math.PI);
+                ping_against_the_wall(x, y, card);
             } // if fails, card is next to wall, else its free to move.
             
             hitboxboard.setCard(card);
@@ -122,13 +126,13 @@ public class PositionController
      * muuttaa kortin liikkumiskulmaa, niin että se kimpoaa luonnollisesti seinästä
      * @param card 
      */
-    public void ping_against_the_wall(Card card)
+    public void ping_against_the_wall(double x, double y, Card card)
     {
-        if (card.fx() >= global.getX_max_index() || card.fx() <= 0)
+        if (x >= global.getX_max_index() || x <= 0)
         {
             card.set_angle((2*Math.PI-card.angle()));
         } // 2*Pi-angle, vasen tai oikea laita.
-        if (card.fy() >= global.getY_max_index() || card.fy() <= 0)
+        if (y >= global.getY_max_index() || y <= 0)
         {
             card.set_angle((Math.PI-card.angle()));
         } // Pi-angle, ylä tai alalaita.
@@ -147,24 +151,24 @@ public class PositionController
         
         // katsotaan kahden kortin koordinaattien kulma ja siirretään liikkuvan velocity paikallaan olevalle. jokaisella ympyrän neljäksellä tapaus pitää käsitellä eri tavalla.
         
-        if (moving.fx() >= still.fx() && moving.fy() < still.fy())  // toisella neljänneksellä.
+        if (moving.fx() > still.fx() && moving.fy() <= still.fy())  // toisella neljänneksellä.
         {
-            //System.out.println("toka");
+            System.out.println("toka");
             angle.set(2*Math.PI+Math.atan((still.fx()-moving.fx())/(still.fy()-moving.fy())));
         }
         if (moving.fx() >= still.fx() && moving.fy() > still.fy()) // ensimmäisellä neljänneksellä
         {
-            //System.out.println("eka");
+            System.out.println("eka");
             angle.set(Math.PI+Math.atan((moving.fx()-still.fx())/(moving.fy()-still.fy())));
         }
         if (moving.fx() < still.fx() && moving.fy() <= still.fy()) // kolmas neljännes
         {
-            //System.out.println("kolmas");
-            angle.set(Math.atan((still.fx()-moving.fx())/(still.fy()-still.fy())));
+            System.out.println("kolmas atan: "+(still.fx()-moving.fx())/(still.fy()-moving.fy()));
+            angle.set(Math.atan((still.fx()-moving.fx())/(still.fy()-moving.fy())));
         }
-        if (moving.fx() < still.fx() && moving.fy() >= still.fy()) // neljäs neljännes
+        if (moving.fx() < still.fx() && moving.fy() > still.fy()) // neljäs neljännes
         {
-            //System.out.println("neljäs");
+            System.out.println("neljäs");
             angle.set(Math.PI+Math.atan((still.fx()-moving.fx())/(still.fy()-moving.fy())));
         }
         

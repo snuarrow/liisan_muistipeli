@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.054" errors="0" skipped="0" tests="11" name="liisan_muistipeli.logic.PositionControllerTest">
+<testsuite failures="0" time="0.108" errors="0" skipped="0" tests="21" name="liisan_muistipeli.logic.PositionControllerTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -60,15 +60,25 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.01" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_ids_size_is_1_with_one_card"/>
-  <testcase time="0.003" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_delete_existing_card_permanently"/>
-  <testcase time="0.004" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_constructor"/>
+  <testcase time="0.013" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_ids_size_is_1_with_one_card"/>
+  <testcase time="0.004" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_delete_existing_card_permanently"/>
+  <testcase time="0.007" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_constructor"/>
+  <testcase time="0.017" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_ping_right_right"/>
   <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_hashmap_size_is_1_with_one_card"/>
+  <testcase time="0.006" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_south_east"/>
+  <testcase time="0.006" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_south_west"/>
+  <testcase time="0.013" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_north_east"/>
+  <testcase time="0.005" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_north_west"/>
+  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_simple_right"/>
+  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_simple_up"/>
   <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_move_simple_right"/>
-  <testcase time="0.007" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_get_by_coordinates_1"/>
-  <testcase time="0.006" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_simple_left"/>
-  <testcase time="0" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_move_simple_down"/>
-  <testcase time="0.001" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_simple_ping_against_left_wall"/>
-  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_delete_card_permanent"/>
-  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_get_by_coordinates_null"/>
+  <testcase time="0.001" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_get_by_coordinates_1"/>
+  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_simple_down"/>
+  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_collide_simple_left"/>
+  <testcase time="0.002" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_move_simple_down"/>
+  <testcase time="0.004" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_ping_top_up"/>
+  <testcase time="0.003" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_ping_down_down"/>
+  <testcase time="0.004" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_delete_card_permanent"/>
+  <testcase time="0.003" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_get_by_coordinates_null"/>
+  <testcase time="0.004" classname="liisan_muistipeli.logic.PositionControllerTest" name="test_ping_left_left"/>
 </testsuite>

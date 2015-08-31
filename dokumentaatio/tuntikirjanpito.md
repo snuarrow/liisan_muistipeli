@@ -24,3 +24,5 @@
 26.8 1000 -> 1200 alkuvalikon parantelua, mainframe luokan siistimistä, start_menu luokka lisää
 26.8 1300 -> 1500 settings_menu luokka lisää, nyt toimii valikkojen nappulat
 27.8 1100 -> 1200 javadocit kaikkiin niitä tarvitseviin funktioihin
+30.8 2100 -> 2300 koodikatselmointi
+31.8 1300 -> 1600 puuttuvia testejä ja bugien korjailua
