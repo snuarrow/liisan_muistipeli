@@ -9,5 +9,7 @@ liisan_muistipeli/gui/Button.class
 liisan_muistipeli/gui/MainFrame.class
 liisan_muistipeli/logic/PositionController.class
 liisan_muistipeli/logic/Card.class
+liisan_muistipeli/gui/StartMenu.class
 liisan_muistipeli/logic/GlobalConstants.class
 liisan_muistipeli/logic/Engine.class
+liisan_muistipeli/gui/EndMenu.class

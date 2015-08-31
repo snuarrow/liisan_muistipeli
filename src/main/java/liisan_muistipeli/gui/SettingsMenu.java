@@ -39,7 +39,7 @@ public class SettingsMenu
     public SettingsMenu(Global global)
     {
         column0_from_left = (int) (global.getVerticalsize()*0.2);
-        column1_from_left = (int) (global.getVerticalsize()*0.7);
+        column1_from_left = (int) (global.getVerticalsize()*0.8);
         headline_fontsize = 40;
         fontsize = 24;
         font = new Font("Monospaced", Font.PLAIN, fontsize);
@@ -100,7 +100,7 @@ public class SettingsMenu
     public void createDifficultyButton()
     {
         int fromleft = column0_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.5);
+        int fromtop = (int) (global.getVerticalsize()*0.6);
         
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
@@ -129,7 +129,7 @@ public class SettingsMenu
     public void createSetResolutionButton()
     {
         int fromleft = column0_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.6);
+        int fromtop = (int) (global.getVerticalsize()*0.65);
         
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
@@ -142,7 +142,7 @@ public class SettingsMenu
     public void createApplyButton()
     {
         int fromleft = column0_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.8);
+        int fromtop = (int) (global.getVerticalsize()*0.75);
         
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
@@ -155,11 +155,11 @@ public class SettingsMenu
     public void showCurrentResolution(Graphics2D g)
     {
         String reso = resolutions[resolution_index][0]+" x "+resolutions[resolution_index][1];
-        Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
+        //Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
         g.setFont(font);
         
         int fromleft = (int) column1_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.6);
+        int fromtop = (int) (global.getVerticalsize()*0.65);
         
         
         g.drawString(reso, fromleft , fromtop);
@@ -171,7 +171,7 @@ public class SettingsMenu
         g.setFont(font);
         
         int fromleft = column1_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.5);
+        int fromtop = (int) (global.getVerticalsize()*0.6);
         g.drawString(difficulty, fromleft , fromtop);
     }
     public void changeDifficulty()

@@ -247,29 +247,53 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         
                         int click = button.click();
                         
-                        if (click == 10) 
+                        switch (click)
                         {
-                            settingsmenu.changeResolution();
-                            System.out.println("change resolution called "+click);
-                        } // change resolution button clicked
-                        if (click == 11)
-                        {
-                                System.out.println("apply called");
-                                global.setVerticalsize(settingsmenu.getResolution()[1]);
-                                global.setHorizontalsize(settingsmenu.getResolution()[0]);
-                                gamestarter.closeFrame();
-                                gamestarter.startFrame();
+                            case 10 :
+                                    {
+                                        settingsmenu.changeResolution();
+                                        System.out.println("change resolution called "+click);
+                                    } break;
+                            case 11 :
+                                    {
+                                        System.out.println("apply called");
+                                        global.setVerticalsize(settingsmenu.getResolution()[1]);
+                                        global.setHorizontalsize(settingsmenu.getResolution()[0]);
+                                        gamestarter.closeFrame();
+                                        gamestarter.startFrame();
+                                    } break;
+                            case 12 :
+                                    {
+                                        settingsmenu.changeDifficulty();
+                                    } break;
+                            case 0 :
+                                    {
+                                        System.out.println("return called");
+                                        gamestate = 0;
+                                    }
                         }
-                        if (click == 12)
-                        {
-                            settingsmenu.changeDifficulty();
-                        }
-                          
-                        if (click == 0) // return button clicked 
-                        {
-                            System.out.println("return called");
-                            gamestate = 0;
-                        }
+//                        if (click == 10) 
+//                        {
+//                            
+//                        } // change resolution button clicked
+//                        if (click == 11)
+//                        {
+//                                System.out.println("apply called");
+//                                global.setVerticalsize(settingsmenu.getResolution()[1]);
+//                                global.setHorizontalsize(settingsmenu.getResolution()[0]);
+//                                gamestarter.closeFrame();
+//                                gamestarter.startFrame();
+//                        }
+//                        if (click == 12)
+//                        {
+//                            settingsmenu.changeDifficulty();
+//                        }
+//                          
+//                        if (click == 0) // return button clicked 
+//                        {
+//                            System.out.println("return called");
+//                            gamestate = 0;
+//                        }
                     }
             case 3 :
                     {

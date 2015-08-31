@@ -56,10 +56,10 @@ public class StartMenu
         // skalaarit pitäis jotenki järkeistää, eli ei kovakoodata.
         
         int fromleft = column0_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.6);
+        int fromtop = (int) (global.getVerticalsize()*0.7);
         
         int width = (int) (global.getVerticalsize()*0.25);
-        int height = (int) (global.getVerticalsize()*0.1);
+        int height = (int) (global.getVerticalsize()*0.03);
         
         //int fontsize = (int) (global.getHorizontalsize()*0.07);
         
@@ -69,10 +69,10 @@ public class StartMenu
     public void createSettingsButton()
     {
         int fromleft = column0_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.7);
+        int fromtop = (int) (global.getVerticalsize()*0.65);
         
         int width = (int) (global.getVerticalsize()*0.4);
-        int height = (int) (global.getVerticalsize()*0.1);
+        int height = (int) (global.getVerticalsize()*0.03);
         
         //int fontsize = (int) (global.getHorizontalsize()*0.05);
         

@@ -57,7 +57,7 @@ public class EndMenu
     public void createToMainMenuButton()
     {
         int fromleft = column0_from_left;
-        int fromtop = (int) (global.getVerticalsize()*0.5);
+        int fromtop = (int) (global.getVerticalsize()*0.4);
         
         int width = (int) (global.getVerticalsize()*0.4);
         int height = (int) (global.getVerticalsize()*0.1);
