@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
 import javax.swing.*;
+import liisan_muistipeli.GameStarter;
 import liisan_muistipeli.logic.Card;
 import liisan_muistipeli.logic.Engine;
 import liisan_muistipeli.logic.Global;
@@ -28,16 +29,23 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     private int image_zoom_time;
     private StartMenu startmenu;
     private SettingsMenu settingsmenu;
+    private EndMenu endmenu;
     
+    private int card_clicks;
     private int gamestate; // 0 = startmenu, 1 = in game, 2 = in settings menu
+    private GameStarter gamestarter;
     
-    public MainFrame(Global global)
+    
+    public MainFrame(Global global, GameStarter gamestarter)
     {
+        this.gamestarter = gamestarter;
+        
+        card_clicks = 0;
         gamestate = 0;
         
         startmenu = new StartMenu(global);
         settingsmenu = new SettingsMenu(global);
-        
+        endmenu = new EndMenu(global);
         
         image_zoom_time = 0;
         image_display_time = -1;
@@ -46,6 +54,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         this.global = global;
         engine = new Engine(global);
         cards = engine.getCards();
+        
         
         addKeyListener(this);
         addMouseListener(this);
@@ -86,6 +95,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         
         settingsmenu.drawHeadline(g);
         settingsmenu.showCurrentResolution(g);
+        settingsmenu.showCurrentDifficulty(g);
         
         for (Button button : settingsmenu.buttons())
         {
@@ -93,6 +103,17 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         }
         
         
+    }
+    public void end_menu(Graphics2D g)
+    {
+        g.drawImage(new Picture(0, "pluto.gif").image(), 0, 0, global.getHorizontalsize(), global.getVerticalsize(), this);
+        
+        endmenu.drawScore(g, (int) ((global.getCardamount()/(double)card_clicks)*100));
+        
+        for (Button button : endmenu.buttons())
+        {
+            button.draw(g);
+        }
     }
     
     /**
@@ -184,6 +205,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                 } break;
             case 2 : settings_menu(g2);
                 break;
+            case 3 : end_menu(g2);
+                break;
         }        
     }
     
@@ -204,9 +227,12 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         image_zoom_time = 0;
 
                         clicked = engine.click(me.getY(), me.getX());
+                        System.out.println(engine.getPC().getIds().size());
 
                         if (clicked != null)
                         {
+                            if (engine.getPC().getIds().isEmpty()) gamestate = 3;
+                            card_clicks += 1;
                             image_display_time = 0;
                             System.out.println("card_id: "+clicked.id()+"  pair_id: "+clicked.pair_id());
                         }
@@ -217,15 +243,39 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         Button button = settingsmenu.mouseclicked(me);
                         
                         int click = button.click();
-                        if (click > 0)
+                        
+                        if (click == 10) 
                         {
-                            if (click == 10) settingsmenu.changeResolution(); // change resolution button clicked
-                          
-                          
-                        } else if (click == 0) // return button clicked 
+                            settingsmenu.changeResolution();
+                            System.out.println("change resolution called "+click);
+                        } // change resolution button clicked
+                        if (click == 11)
                         {
+                                System.out.println("apply called");
+                                global.setVerticalsize(settingsmenu.getResolution()[1]);
+                                global.setHorizontalsize(settingsmenu.getResolution()[0]);
+                                gamestarter.closeFrame();
+                                gamestarter.startFrame();
+                        }
+                        if (click == 12)
+                        {
+                            settingsmenu.changeDifficulty();
+                        }
+                          
+                        if (click == 0) // return button clicked 
+                        {
+                            System.out.println("return called");
                             gamestate = 0;
                         }
+                    }
+            case 3 :
+                    {
+                        Button button = endmenu.mouseclicked(me);
+                        gamestate = button.click();
+                        engine = new Engine(global);
+                        image_zoom_time = 0;
+                        image_display_time = -1;
+                        //cards = engine.getCards();
                     }
         }
     }
@@ -262,6 +312,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     {
         if (gamestate == 0) startmenu.mousehover(me);
         if (gamestate == 2) settingsmenu.mousehover(me);
+        if (gamestate == 3) endmenu.mousehover(me);
     }
 
     @Override

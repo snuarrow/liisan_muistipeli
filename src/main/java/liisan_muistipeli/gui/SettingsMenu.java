@@ -24,6 +24,8 @@ public class SettingsMenu
     private int yreso;
     private int resolution_index;
     private int[][] resolutions;
+    private String[] difficulties;
+    private int difficulties_index;
     
     public SettingsMenu(Global global)
     {
@@ -42,6 +44,14 @@ public class SettingsMenu
         
         resolution_index = 0;
         
+        difficulties = new String[3];
+        
+        difficulties[0] = "kid's stuff";
+        difficulties[1] = "normal";
+        difficulties[2] = "autistic";
+        
+        difficulties_index = 1;
+        
         
         xreso = global.getHorizontalsize();
         yreso = global.getVerticalsize();
@@ -49,7 +59,17 @@ public class SettingsMenu
         this.global = global;
         createSetResolutionButton();
         createReturnButton();
+        createApplyButton();
+        createDifficultyButton();
     }
+    public int[] getResolution()
+    {
+        int[] value = new int[2];
+        value[0] = resolutions[resolution_index][0];
+        value[1] = resolutions[resolution_index][1];
+        return value;
+    }
+    
     public ArrayList<Button> buttons()
     {
         return buttons;
@@ -61,12 +81,25 @@ public class SettingsMenu
         g.setColor(Color.DARK_GRAY);
         g.drawString("settings", 100, 100);
     }
+    public void createDifficultyButton()
+    {
+        int fromleft = (int) (global.getHorizontalsize()*0.6);
+        int fromtop = (int) (global.getVerticalsize()*0.2);
+        
+        int width = (int) (global.getVerticalsize()*0.25);
+        int height = (int) (global.getVerticalsize()*0.1);
+        
+        int fontsize = (int) (global.getHorizontalsize()*0.07);
+        
+        
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "difficulty", 12));
+    }
     public void createReturnButton()
     {
         // skalaarit pitäis jotenki järkeistää, eli ei kovakoodata.
         
         int fromleft = (int) (global.getHorizontalsize()*0.2);
-        int fromtop = (int) (global.getVerticalsize()*0.6);
+        int fromtop = (int) (global.getVerticalsize()*0.7);
         
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.1);
@@ -80,7 +113,7 @@ public class SettingsMenu
     public void createSetResolutionButton()
     {
         int fromleft = (int) (global.getHorizontalsize()*0.2);
-        int fromtop = (int) (global.getVerticalsize()*0.5);
+        int fromtop = (int) (global.getVerticalsize()*0.4);
         
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.1);
@@ -89,6 +122,19 @@ public class SettingsMenu
         
         
         buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "change resolution", 10));
+    }
+    public void createApplyButton()
+    {
+        int fromleft = (int) (global.getHorizontalsize()*0.2);
+        int fromtop = (int) (global.getVerticalsize()*0.9);
+        
+        int width = (int) (global.getVerticalsize()*0.25);
+        int height = (int) (global.getVerticalsize()*0.1);
+        
+        int fontsize = (int) (global.getHorizontalsize()*0.03);
+        
+        
+        buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "apply", 11));
     }
     public void showCurrentResolution(Graphics2D g)
     {
@@ -102,6 +148,22 @@ public class SettingsMenu
         
         g.drawString(reso, fromleft , fromtop);
     }
+    public void showCurrentDifficulty(Graphics2D g)
+    {
+        String difficulty = difficulties[difficulties_index];
+        Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
+        g.setFont(font);
+        
+        int fromleft = (int) (global.getHorizontalsize()*0.6);
+        int fromtop = (int) (global.getVerticalsize()*0.4);
+        g.drawString(difficulty, fromleft , fromtop);
+    }
+    public void changeDifficulty()
+    {
+        difficulties_index += 1;
+        if (difficulties_index > 2) difficulties_index = 0;
+    }
+    
     public void changeResolution()
     {
         resolution_index += 1;

@@ -28,7 +28,7 @@ public class GameStarter
     public void startFrame()
     {
         f = new JFrame();
-        MainFrame m = new MainFrame(global);
+        MainFrame m = new MainFrame(global, this);
         m.setBackground(Color.darkGray);
         f.add(m);
         f.setVisible(true);
@@ -37,6 +37,7 @@ public class GameStarter
     }
     public void closeFrame()
     {
-       
+       f.setVisible(false);
+       f.dispose();
     }
 }

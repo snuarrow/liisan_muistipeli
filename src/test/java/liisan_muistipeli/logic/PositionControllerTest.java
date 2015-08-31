@@ -382,6 +382,8 @@ public class PositionControllerTest
     }
     
     
+    //testaa vielä pingin 45 asteiset kulmat sekä colliden rajatapauksia?
+    
     
 
     /**

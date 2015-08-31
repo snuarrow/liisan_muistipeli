@@ -3,6 +3,7 @@
 /home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/logic/Picture.java
 /home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/gui/StartMenu.java
 /home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/logic/Card.java
+/home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/gui/EndMenu.java
 /home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/gui/MainFrame.java
 /home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/gui/SettingsMenu.java
 /home/hexvaara/Documents/Courses/javalabra/liisan_muistipeli/src/main/java/liisan_muistipeli/logic/GlobalConstants.java

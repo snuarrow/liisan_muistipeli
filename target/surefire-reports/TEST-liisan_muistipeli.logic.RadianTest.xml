@@ -61,8 +61,8 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase time="0" classname="liisan_muistipeli.logic.RadianTest" name="test1"/>
-  <testcase time="0" classname="liisan_muistipeli.logic.RadianTest" name="test2"/>
-  <testcase time="0.001" classname="liisan_muistipeli.logic.RadianTest" name="test3"/>
+  <testcase time="0.001" classname="liisan_muistipeli.logic.RadianTest" name="test2"/>
+  <testcase time="0" classname="liisan_muistipeli.logic.RadianTest" name="test3"/>
   <testcase time="0" classname="liisan_muistipeli.logic.RadianTest" name="test4"/>
   <testcase time="0" classname="liisan_muistipeli.logic.RadianTest" name="test5"/>
   <testcase time="0" classname="liisan_muistipeli.logic.RadianTest" name="testRadian_under0"/>
