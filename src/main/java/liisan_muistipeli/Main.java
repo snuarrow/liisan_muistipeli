@@ -6,7 +6,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        System.out.println("*** start ***");
+        //System.out.println("*** start ***");
         
         // start main frame here
 //        JFrame f = new JFrame();
@@ -25,6 +25,6 @@ public class Main
         GameStarter gamestarter = new GameStarter(global);
         gamestarter.startFrame();
         
-        System.out.println("*** end ***");
+        //System.out.println("*** end ***");
     }
 }

@@ -113,7 +113,7 @@ public class Button
      */
     public int click()
     {
-        System.out.println(click+" button clicked!"); // tää poistettava lopullisessa palautuksessa.
+        //System.out.println(click+" button clicked!"); // tää poistettava lopullisessa palautuksessa.
         return click;
     }
     

@@ -14,5 +14,7 @@ public interface GlobalConstants
     int i_image_maxsize = 500;
     int i_fps = 60;
     int i_pictures_in_folder = 507;
+    int i_resolutions_index = 0;
+    int i_difficulties_index = 0;
     double i_default_start_speed = 1.5;
 }

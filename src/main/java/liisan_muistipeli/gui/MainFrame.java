@@ -219,7 +219,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
             case 0 : 
                     {
                         Button button = startmenu.mouseclicked(me);
-                        gamestate = button.click();
+                        if (button != null) gamestate = button.click();
                     } break;
                 
             case 1 :
@@ -228,16 +228,16 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                         image_zoom_time = 0;
 
                         clicked = engine.click(me.getY(), me.getX());
-                        System.out.println(engine.getPC().getIds().size());
+                        //System.out.println(engine.getPC().getIds().size());
 
                         if (clicked != null)
                         {
                             if (engine.getPC().getIds().isEmpty()) gamestate = 3;
                             card_clicks += 1;
                             image_display_time = 0;
-                            System.out.println("card_id: "+clicked.id()+"  pair_id: "+clicked.pair_id());
+                            //System.out.println("card_id: "+clicked.id()+"  pair_id: "+clicked.pair_id());
                         }
-                        else System.out.println("null");
+                        //else System.out.println("null");
                     } break;
             case 2 : 
                     {
@@ -245,32 +245,59 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                       
                         Button button = settingsmenu.mouseclicked(me);
                         
+                        if (button != null)
+                        {
+                        
                         int click = button.click();
+                        
+                        //System.out.println("click: "+click);
+                        
                         
                         switch (click)
                         {
                             case 10 :
                                     {
                                         settingsmenu.changeResolution();
-                                        System.out.println("change resolution called "+click);
+                                        //System.out.println("change resolution called "+click);
                                     } break;
                             case 11 :
                                     {
-                                        System.out.println("apply called");
+                                        //System.out.println("apply called");
                                         global.setVerticalsize(settingsmenu.getResolution()[1]);
                                         global.setHorizontalsize(settingsmenu.getResolution()[0]);
+                                        
+                                        //System.out.println("settings difficulty index:"+settingsmenu.getDifficulty());
+                                        
+                                        if (settingsmenu.getDifficulty() == 1) // normal
+                                        {
+                                            //System.out.println("set normal");
+                                            global.setCardsize(global.getVerticalsize()/10);
+                                        } else if (settingsmenu.getDifficulty() == 0) // kid's stuff
+                                        {
+                                            //System.out.println("set kid's stuff");
+                                            global.setCardsize(global.getVerticalsize()/5);
+                                        } else if (settingsmenu.getDifficulty() == 2) // autistic
+                                        {
+                                            //System.out.println("set autistic");
+                                            global.setCardsize(global.getVerticalsize()/15);
+                                        }
+                                        
+                                        
+                                        
                                         gamestarter.closeFrame();
                                         gamestarter.startFrame();
                                     } break;
                             case 12 :
                                     {
                                         settingsmenu.changeDifficulty();
+                                        //System.out.println("settingsmenu dif:"+settingsmenu.getDifficulty());
                                     } break;
                             case 0 :
                                     {
-                                        System.out.println("return called");
+                                        //System.out.println("return called");
                                         gamestate = 0;
                                     }
+                        }
                         }
 //                        if (click == 10) 
 //                        {
@@ -294,14 +321,20 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
 //                            System.out.println("return called");
 //                            gamestate = 0;
 //                        }
-                    }
+                    } break;
             case 3 :
                     {
                         Button button = endmenu.mouseclicked(me);
+                        
+                        if (button != null)
+                        {
+                            
+                          
                         gamestate = button.click();
                         engine = new Engine(global);
                         image_zoom_time = 0;
                         image_display_time = -1;
+                        }
                     }
         }
     }

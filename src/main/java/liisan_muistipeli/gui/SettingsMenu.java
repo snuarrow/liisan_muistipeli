@@ -58,7 +58,7 @@ public class SettingsMenu
         resolutions[4][0] = 1600;
         resolutions[4][1] = 900;
         
-        resolution_index = 0;
+        resolution_index = global.getResolution();
         
         difficulties = new String[3];
         
@@ -66,7 +66,7 @@ public class SettingsMenu
         difficulties[1] = "normal";
         difficulties[2] = "autistic";
         
-        difficulties_index = 1;
+        difficulties_index = global.getDifficulty();
         
         
         xreso = global.getHorizontalsize();
@@ -84,6 +84,10 @@ public class SettingsMenu
         value[0] = resolutions[resolution_index][0];
         value[1] = resolutions[resolution_index][1];
         return value;
+    }
+    public int getDifficulty()
+    {
+        return difficulties_index;
     }
     
     public ArrayList<Button> buttons()
@@ -176,14 +180,17 @@ public class SettingsMenu
     }
     public void changeDifficulty()
     {
-        difficulties_index += 1;
+        //System.out.println("changedifficulty() called i:"+difficulties_index);
+        difficulties_index++;
         if (difficulties_index > 2) difficulties_index = 0;
+        global.setDifficulty(difficulties_index);
     }
     
     public void changeResolution()
     {
         resolution_index += 1;
         if (resolution_index > 4) resolution_index = 0;
+        global.setResolution(resolution_index);
     }
     public void mousehover(MouseEvent me)
     {

@@ -33,6 +33,7 @@ public class GameStarter
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(global.getHorizontalsize(), global.getVerticalsize());
         f.setLocationRelativeTo(null);
+        //System.out.println("cardamount : "+global.getCardamount());
     }
     public void closeFrame()
     {
