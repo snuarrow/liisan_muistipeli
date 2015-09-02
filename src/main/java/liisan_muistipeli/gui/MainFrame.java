@@ -214,6 +214,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseClicked(MouseEvent me) {
         
+        //System.out.println(me.getButton());
+        
         switch (gamestate)
         {
             case 0 : 
@@ -224,6 +226,15 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                 
             case 1 :
                     {
+                        if (me.getButton() == 3)
+                        {
+                            gamestate = 0;
+                            engine = new Engine(global);
+                            image_zoom_time = 0;
+                            image_display_time = -1;
+                            break;
+                        }
+                      
                         show_picture_state = 0;
                         image_zoom_time = 0;
 
@@ -368,16 +379,19 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     {
         // <-------------------------------------------------------------------ei toimi, miksei?
         
-        System.out.println("key pressed");
-        if (ke.getKeyCode() == KeyEvent.VK_ESCAPE)
-        {
-            System.out.println("esc pressed");
-            gamestate = 0;
-        }
+//        System.out.println("key pressed");
+//        if (ke.getKeyCode() == KeyEvent.VK_ESCAPE)
+//        {
+//            System.out.println("esc pressed");
+//            gamestate = 0;
+//        }
     }
 
     @Override
-    public void keyPressed(KeyEvent ke) {}
+    public void keyPressed(KeyEvent ke) 
+    {
+        //System.out.println("key pressed");
+    }
 
     @Override
     public void keyReleased(KeyEvent ke) {}

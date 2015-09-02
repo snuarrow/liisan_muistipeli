@@ -29,3 +29,4 @@
 31.8 2100 -> 0000 loppuvalikko, gamestarter luokka, settings menun täydennystä ja toiminnallisuuden tekoa.
 1.9 0000 -> 0300 valikoiden siistimistä
 1.9 1400 -> 2000 peli nyt palautusvalmis, toimiva jar luotu, dokumentaatioiden täydennystä
+2.9 2000 -> 2300 engine luokalle kunnolliset testit, nyt pelissä voi palata aloitusvalikkoon mouse secondaryllä

@@ -109,7 +109,22 @@ public class HitBoxBoard
     {
         for (int y = 0; y < g.getVerticalsize(); y++) {
             for (int x = 0; x < g.getHorizontalsize(); x++) {
+                if (board[y][x] < 10) System.out.print("0");
                 System.out.print(board[y][x]+" ");
+            }
+            System.out.println("");
+        }
+        for (int i = 0; i < g.getHorizontalsize(); i++) {
+            System.out.print("--");
+        }System.out.println("");
+    }
+    public void print_blank()
+    {
+        for (int y = 0; y < g.getVerticalsize(); y++) {
+            for (int x = 0; x < g.getHorizontalsize(); x++) {
+                if (board[y][x] != 0) System.out.print("#");
+                else System.out.print(".");
+                System.out.print(" ");
             }
             System.out.println("");
         }

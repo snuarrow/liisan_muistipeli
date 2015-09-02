@@ -51,6 +51,20 @@ public class GlobalTest implements GlobalConstants
      * Test of refresh method, of class Global.
      */
     @Test
+    public void test_set_get_difficulty()
+    {
+        global.setDifficulty(0);
+        assertEquals(0, global.getDifficulty());
+    }
+    @Test
+    public void test_set_get_resolution_index()
+    {
+        global.setResolution(0);
+        assertEquals(0, global.getResolution());
+    }
+    
+    
+    @Test
     public void test_Constructor()
     {
         assertEquals(global.getAcceleration(), i_acceleration, 0.001);

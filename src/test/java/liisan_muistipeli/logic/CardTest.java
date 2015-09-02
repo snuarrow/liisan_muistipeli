@@ -59,6 +59,11 @@ public class CardTest
         assertEquals(50, c.y());
         assertEquals(60, c.x());
     }
+    @Test
+    public void test_get_picture_works()
+    {
+        assertNotNull(card.picture());
+    }
     
     @Test
     public void test_id_cannot_be_0()

@@ -42,33 +42,68 @@ public final class Engine
     {
         boolean up = true;
         boolean down = true;
-        Card found = null;
-        for (int i = 0; i < global.getCardsize(); i++)
-          {
-            if (up && pc.get_by_coordinates(y + i, x) != null)
-              {
-                if (found == null)
-                  {
+        Card upper = null;
+        Card lower = null;
+        
+        for (int i = 0; i < global.getCardsize()+1; i++)
+        {
+            if (y-i >= 0) // upper inside board
+            {
+                if (up && pc.get_by_coordinates(y-i, x) != null)
+                {
                     up = false;
-                    found = pc.get_by_coordinates(y + i, x);
-                  } else if (found == pc.get_by_coordinates(y + i, x))
-                  {
-                    break;
-                  }
-              }
-            if (down && pc.get_by_coordinates(y - 1, x) != null)
-              {
-                if (found == null)
-                  {
+                    upper = pc.get_by_coordinates(y-i, x);
+                }
+            }
+            if (y+i < global.getVerticalsize()) // lower inside board
+            {
+                if (down && pc.get_by_coordinates(y+i, x) != null)
+                {
                     down = false;
-                    found = pc.get_by_coordinates(y - i, x);
-                  } else if (found == pc.get_by_coordinates(y - i, x))
-                  {
-                    break;
-                  }
-              }
-          }
-        return found;
+                    lower = pc.get_by_coordinates(y+i, x);
+                }
+            }
+            
+            
+        }
+        
+        if (upper == null) return null;
+        if (lower == null) return null;
+        if (upper.id() == lower.id()) return upper;
+        else return null;
+        
+//        boolean up = true;
+//        boolean down = true;
+//        Card found = null;
+//        for (int i = 0; i < global.getCardsize(); i++)
+//          {
+//            //if (y-i < 0) return null;
+//            //if (y+i > global.getVerticalsize()-1) return null;
+//            
+//            if (up && pc.get_by_coordinates(y + i, x) != null)
+//              {
+//                if (found == null)
+//                  {
+//                    up = false;
+//                    found = pc.get_by_coordinates(y + i, x);
+//                  } else if (found == pc.get_by_coordinates(y + i, x))
+//                  {
+//                    break;
+//                  }
+//              }
+//            if (down && pc.get_by_coordinates(y - 1, x) != null)
+//              {
+//                if (found == null)
+//                  {
+//                    down = false;
+//                    found = pc.get_by_coordinates(y - i, x);
+//                  } else if (found == pc.get_by_coordinates(y - i, x))
+//                  {
+//                    break;
+//                  }
+//              }
+//          }
+//        return found;
     }
 
     /**

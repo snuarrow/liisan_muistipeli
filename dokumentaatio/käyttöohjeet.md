@@ -1,10 +1,17 @@
-2 weeks left in development, may not work as intended in this manual.
+instructions for muistipeli
 
-1. run liisan_muistipeli.jar
-2. click face
-3. inspect picture
-4. vigilance
-5. find pair
-6. repeat 2-5.
-...
-7. inspect score as a perfection percent.
+to start the game:
+	1. run java -jar liisan_muistipeli.jar
+	2. choose play with default settings (difficulty: "kid's stuff", resolution: 1024x768)
+   or alter settings, remember apply if desired.
+
+in game:
+	if desired, click mouse secondary to return main menu, caution: progress will not be saved.
+
+	1. click face
+	2. inspect picture
+	3. vigilance
+	4. find pair
+	5. repeat 1-4.
+	...
+	6. inspect score as a perfection percent and you may return to main menu.
