@@ -1,5 +1,6 @@
-liisan_muistipeli
-
+liisan_muistipeli 
+versio 0.1
+ 
 Muistipeli fysiikkamoottorilla.
 Dokumentaatiot omassa kansiossaan.
 
