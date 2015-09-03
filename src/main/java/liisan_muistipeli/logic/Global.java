@@ -1,27 +1,17 @@
 package liisan_muistipeli.logic;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 /**
  * Globaalien muuttujien luokka, josta luodaan yksi instanssi jaettavaksi muille sitä tarvitsaville luokille. mahdollistaa joidenkin muuttujien muuttamisen.
  */
-
 public final class Global implements GlobalConstants
 {
     private int resolution_index, difficulty_index, pictures_in_folder, horizontalsize, verticalsize, cardsize, image_displaytime_ms, image_zoomtime_ms, image_maxsize, fps, timer_interval, clearance, slot, horizontalamount, verticalamount, cardamount, y_max_index, x_max_index;
-    
-    //not used yet but will be in near future
     private double acceleration, default_start_speed;
     
-    
-    public Global() //tested
+    public Global()
     {
-        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        
         renew();
         refresh();
-        
     }
     
     /**
@@ -47,7 +37,7 @@ public final class Global implements GlobalConstants
     /**
      * luo johdetut attribuutit jotka helpottavat koodin luettavuutta.
      */
-    public void refresh() //tested
+    public void refresh()
     {
         timer_interval = 1000/fps;
         clearance = cardsize / 3;
@@ -85,80 +75,68 @@ public final class Global implements GlobalConstants
     
     public int getPicturesInFolder() { return this.pictures_in_folder; }
 
-    public int getHorizontalsize() //tested_default
+    public int getHorizontalsize()
     {
         return horizontalsize;
     }
 
-    public void setHorizontalsize(int horizontalsize) //tested positive
+    public void setHorizontalsize(int horizontalsize)
     {
-        // filter negative values plz.
-        
         this.horizontalsize = horizontalsize;
         refresh();
     }
 
-    public int getVerticalsize() //tested_default
+    public int getVerticalsize()
     {
         return verticalsize;
     }
 
-    public void setVerticalsize(int verticalsize) // tested positive
+    public void setVerticalsize(int verticalsize)
     {
-        // filter negative values plz.
-        
         this.verticalsize = verticalsize;
         refresh();
     }
 
-    public int getCardsize() // tested
+    public int getCardsize()
     {
         return cardsize;
     }
 
-    public void setCardsize(int cardsize) // tested positive
+    public void setCardsize(int cardsize)
     {
-        // filter negative values plz.
-        
         this.cardsize = cardsize;
         refresh();
     }
 
-    public int getImage_displaytime_ms() // tested
+    public int getImage_displaytime_ms()
     {
         return image_displaytime_ms;
     }
 
-    public void setImage_displaytime_ms(int image_displaytime_ms) // tested positive
+    public void setImage_displaytime_ms(int image_displaytime_ms)
     {
-        // filter negative values plz.
-        
         this.image_displaytime_ms = image_displaytime_ms;
         refresh();
     }
 
-    public int getImage_zoomtime_ms() //tested
+    public int getImage_zoomtime_ms()
     {
         return image_zoomtime_ms;
     }
 
-    public void setImage_zoomtime_ms(int image_zoomtime_ms) //tested positive
+    public void setImage_zoomtime_ms(int image_zoomtime_ms)
     {
-        // filter negative values plz.
-        
         this.image_zoomtime_ms = image_zoomtime_ms;
         refresh();
     }
 
-    public int getImage_maxsize() //tested
+    public int getImage_maxsize()
     {
         return image_maxsize;
     }
 
-    public void setImage_maxsize(int image_maxsize) //tested positive
+    public void setImage_maxsize(int image_maxsize)
     {
-        // filter negative values plz.
-        
         this.image_maxsize = image_maxsize;
         refresh();
     }
@@ -168,10 +146,8 @@ public final class Global implements GlobalConstants
         return fps;
     }
 
-    public void setFps(int fps) // tested positive
+    public void setFps(int fps)
     {
-        // filter negative values plz.
-        
         this.fps = fps;
         refresh();
     }
@@ -223,8 +199,6 @@ public final class Global implements GlobalConstants
 
     public void setAcceleration(double acceleration)
     {
-        // filter negative values plz.
-        
         this.acceleration = acceleration;
         refresh();
     }

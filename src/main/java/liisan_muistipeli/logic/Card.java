@@ -40,7 +40,6 @@ public final class Card
      * Invarianttien tarkistus
      * @return true/false riippuen oliko kaikki ok.
      */
-    
     public boolean checkBoundaries()
     {
         // tänne tarvii jonkun validaattorin kuvalle.
@@ -56,7 +55,6 @@ public final class Card
      * Hidastaa kortin nopeutta
      * @return true mikäli nopeutta voitiin hidastaa (oli suurempi kuin nolla), muulloin false.
      */
-    
     public boolean slow() //tested
     {
         if (velocity > global.getAcceleration()) { velocity -= global.getAcceleration(); return true; }
@@ -64,13 +62,13 @@ public final class Card
     }
     
     // Getters >>> start >>>
-    public int x() { return x; }  //tested
-    public int y() { return y; }  //tested
-    public double fx() { return fx; } //tested
-    public double fy() { return fy; } //tested
-    public int id() { return id; } //tested
-    public int pair_id() { return pair_id; } //tested
-    public double angle() { return angle.get(); } //tested
+    public int x() { return x; }
+    public int y() { return y; }
+    public double fx() { return fx; }
+    public double fy() { return fy; }
+    public int id() { return id; }
+    public int pair_id() { return pair_id; }
+    public double angle() { return angle.get(); }
     public double velocity() { return velocity; }
     public Picture picture() { return picture; }
     //// Getters <<< end <<<
@@ -83,7 +81,7 @@ public final class Card
      * @param x koordinaatti
      * @return true/false riippuen onnistuiko operaatio.
      */
-    public boolean set_yx(double y, double x) //tested
+    public boolean set_yx(double y, double x)
     {
         if (y < 0 || x < 0 || y > global.getVerticalsize()-global.getCardsize() || x > global.getHorizontalsize()-global.getCardsize())
         {
@@ -101,13 +99,11 @@ public final class Card
         checkBoundaries();
         return true;
     }
-    public void set_velocity(double velocity) //tested
+    public void set_velocity(double velocity)
     {
         if (velocity >= 0) this.velocity = velocity;
         else throw new IndexOutOfBoundsException();
     }
-    public void set_angle(double angle) { this.angle.set(angle);} //tested
-    
+    public void set_angle(double angle) { this.angle.set(angle);}
     //// Setters <<< end <<<
-    
 }

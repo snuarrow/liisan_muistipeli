@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package liisan_muistipeli.gui;
 
 import java.awt.Color;
@@ -13,8 +8,7 @@ import java.util.ArrayList;
 import liisan_muistipeli.logic.Global;
 
 /**
- *
- * @author hexvaara
+ * Luokka asetusvalikon näkymälle ja napeille.
  */
 public class SettingsMenu
 {
@@ -26,7 +20,6 @@ public class SettingsMenu
     private int[][] resolutions;
     private String[] difficulties;
     private int difficulties_index;
-    
     
     //alignment variables
     private int column0_from_left;
@@ -109,9 +102,6 @@ public class SettingsMenu
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
         
-        //int fontsize = (int) (global.getHorizontalsize()*0.07);
-        
-        
         buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "difficulty", 12, font));
     }
     public void createReturnButton()
@@ -124,9 +114,6 @@ public class SettingsMenu
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
         
-        //int fontsize = (int) (global.getHorizontalsize()*0.07);
-        
-        
         buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "return", 0, font));
     }
     
@@ -138,9 +125,6 @@ public class SettingsMenu
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
         
-        //int fontsize = (int) (global.getHorizontalsize()*0.03);
-        
-        
         buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "resolution", 10, font));
     }
     public void createApplyButton()
@@ -151,36 +135,30 @@ public class SettingsMenu
         int width = (int) (global.getVerticalsize()*0.25);
         int height = (int) (global.getVerticalsize()*0.03);
         
-        //int fontsize = (int) (global.getHorizontalsize()*0.03);
-        
-        
         buttons.add(new Button(fromleft, fromtop, width, height, fontsize, "apply", 11, font));
     }
     public void showCurrentResolution(Graphics2D g)
     {
         String reso = resolutions[resolution_index][0]+" x "+resolutions[resolution_index][1];
-        //Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
         g.setFont(font);
         
         int fromleft = (int) column1_from_left;
         int fromtop = (int) (global.getVerticalsize()*0.65);
-        
-        
+
         g.drawString(reso, fromleft , fromtop);
     }
     public void showCurrentDifficulty(Graphics2D g)
     {
         String difficulty = difficulties[difficulties_index];
-        //Font font = new Font("Monospaced", Font.PLAIN, (int) (global.getHorizontalsize()*0.03));
         g.setFont(font);
         
         int fromleft = column1_from_left;
         int fromtop = (int) (global.getVerticalsize()*0.6);
+    
         g.drawString(difficulty, fromleft , fromtop);
     }
     public void changeDifficulty()
     {
-        //System.out.println("changedifficulty() called i:"+difficulties_index);
         difficulties_index++;
         if (difficulties_index > 2) difficulties_index = 0;
         global.setDifficulty(difficulties_index);

@@ -5,8 +5,6 @@
  */
 package liisan_muistipeli.logic;
 
-import liisan_muistipeli.logic.GlobalConstants;
-import liisan_muistipeli.logic.Global;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

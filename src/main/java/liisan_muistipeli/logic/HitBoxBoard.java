@@ -56,12 +56,6 @@ public class HitBoxBoard
                 board[card.y()+i][card.x()+g.getCardsize()-1] = card.id();
             }
         }
-        // muuta hitboksi ympyräks sit ku toimii kaikki muuten, siihe asti ontolla neliöllä.
-        
-        /*
-            id vasemmas yläkulmassa ja ympyrä id:tä
-            ratkaise matikka, ei oo amerikantemppu.
-        */
     }
     
     /**
@@ -132,6 +126,4 @@ public class HitBoxBoard
             System.out.print("--");
         }System.out.println("");
     }
-    
-
 }

@@ -2,7 +2,6 @@ package liisan_muistipeli.gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.HashMap;
 import javax.swing.*;
 import liisan_muistipeli.GameStarter;
 import liisan_muistipeli.logic.Card;
@@ -14,9 +13,7 @@ import liisan_muistipeli.logic.Picture;
  * Graafinen käyttöliittymä engine luokan käyttämiseen. sisältää toiminnallisuutta mm. hiiren seuraamista ja ajastimien ylläpitoa.
  */
 
-// rumaa koodia!! siisti demon jälkeen koko luokka.
-
-public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener
+public class MainFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener
 {
     private final Timer t;
     private Engine engine;
@@ -53,8 +50,6 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         this.global = global;
         engine = new Engine(global);
         
-        
-        addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
         t = new Timer(global.getTimer_interval(), this);
@@ -132,6 +127,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         }
     }
     
+    // muuttujat show_picture funktiolle
     private int show_picture_state = 0; // 0 = in zoom period, 1 = fully zoomed
     private int upper_left_x;
     private int upper_left_y;
@@ -214,8 +210,6 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseClicked(MouseEvent me) {
         
-        //System.out.println(me.getButton());
-        
         switch (gamestate)
         {
             case 0 : 
@@ -237,116 +231,70 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                       
                         show_picture_state = 0;
                         image_zoom_time = 0;
-
                         clicked = engine.click(me.getY(), me.getX());
-                        //System.out.println(engine.getPC().getIds().size());
 
                         if (clicked != null)
                         {
                             if (engine.getPC().getIds().isEmpty()) gamestate = 3;
                             card_clicks += 1;
                             image_display_time = 0;
-                            //System.out.println("card_id: "+clicked.id()+"  pair_id: "+clicked.pair_id());
                         }
-                        //else System.out.println("null");
                     } break;
-            case 2 : 
+            case 2 : // settings menu state
+                {
+                    Button button = settingsmenu.mouseclicked(me);
+                        
+                    if (button != null)
                     {
-                        // <--------------------------------------------------------------------------------------------------------------------switch case tänne!
-                      
-                        Button button = settingsmenu.mouseclicked(me);
-                        
-                        if (button != null)
-                        {
-                        
                         int click = button.click();
-                        
-                        //System.out.println("click: "+click);
-                        
                         
                         switch (click)
                         {
-                            case 10 :
+                            case 10 : // change resolution button called
+                                {
+                                    settingsmenu.changeResolution();
+                                } break;
+                            case 11 : // apply button called
+                                {
+                                    global.setVerticalsize(settingsmenu.getResolution()[1]);
+                                    global.setHorizontalsize(settingsmenu.getResolution()[0]);
+                                        
+                                    if (settingsmenu.getDifficulty() == 1) // normal
                                     {
-                                        settingsmenu.changeResolution();
-                                        //System.out.println("change resolution called "+click);
-                                    } break;
-                            case 11 :
+                                        global.setCardsize(global.getVerticalsize()/10);
+                                    } else if (settingsmenu.getDifficulty() == 0) // kid's stuff
                                     {
-                                        //System.out.println("apply called");
-                                        global.setVerticalsize(settingsmenu.getResolution()[1]);
-                                        global.setHorizontalsize(settingsmenu.getResolution()[0]);
-                                        
-                                        //System.out.println("settings difficulty index:"+settingsmenu.getDifficulty());
-                                        
-                                        if (settingsmenu.getDifficulty() == 1) // normal
-                                        {
-                                            //System.out.println("set normal");
-                                            global.setCardsize(global.getVerticalsize()/10);
-                                        } else if (settingsmenu.getDifficulty() == 0) // kid's stuff
-                                        {
-                                            //System.out.println("set kid's stuff");
-                                            global.setCardsize(global.getVerticalsize()/5);
-                                        } else if (settingsmenu.getDifficulty() == 2) // autistic
-                                        {
-                                            //System.out.println("set autistic");
-                                            global.setCardsize(global.getVerticalsize()/15);
-                                        }
-                                        
-                                        
-                                        
-                                        gamestarter.closeFrame();
-                                        gamestarter.startFrame();
-                                    } break;
-                            case 12 :
+                                        global.setCardsize(global.getVerticalsize()/5);
+                                    } else if (settingsmenu.getDifficulty() == 2) // autistic
                                     {
-                                        settingsmenu.changeDifficulty();
-                                        //System.out.println("settingsmenu dif:"+settingsmenu.getDifficulty());
-                                    } break;
-                            case 0 :
-                                    {
-                                        //System.out.println("return called");
-                                        gamestate = 0;
+                                        global.setCardsize(global.getVerticalsize()/15);
                                     }
+                                    gamestarter.closeFrame(); // reset frame
+                                    gamestarter.startFrame();
+                                } break;
+                            case 12 : // change difficulty button called
+                                {
+                                    settingsmenu.changeDifficulty();
+                                } break;
+                            case 0 : // return button called
+                                {
+                                    gamestate = 0;
+                                }
                         }
-                        }
-//                        if (click == 10) 
-//                        {
-//                            
-//                        } // change resolution button clicked
-//                        if (click == 11)
-//                        {
-//                                System.out.println("apply called");
-//                                global.setVerticalsize(settingsmenu.getResolution()[1]);
-//                                global.setHorizontalsize(settingsmenu.getResolution()[0]);
-//                                gamestarter.closeFrame();
-//                                gamestarter.startFrame();
-//                        }
-//                        if (click == 12)
-//                        {
-//                            settingsmenu.changeDifficulty();
-//                        }
-//                          
-//                        if (click == 0) // return button clicked 
-//                        {
-//                            System.out.println("return called");
-//                            gamestate = 0;
-//                        }
-                    } break;
-            case 3 :
-                    {
-                        Button button = endmenu.mouseclicked(me);
+                    }
+                } break;
+            case 3 : // end menu state
+                {
+                    Button button = endmenu.mouseclicked(me);
                         
-                        if (button != null)
-                        {
-                            
-                          
+                    if (button != null)
+                    {
                         gamestate = button.click();
                         engine = new Engine(global);
                         image_zoom_time = 0;
                         image_display_time = -1;
-                        }
                     }
+                }
         }
     }
 
@@ -368,31 +316,8 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseMoved(MouseEvent me)
     {
-        // <-----------------------------------------------------------------switch case tänne!
         if (gamestate == 0) startmenu.mousehover(me);
         if (gamestate == 2) settingsmenu.mousehover(me);
         if (gamestate == 3) endmenu.mousehover(me);
     }
-
-    @Override
-    public void keyTyped(KeyEvent ke)
-    {
-        // <-------------------------------------------------------------------ei toimi, miksei?
-        
-//        System.out.println("key pressed");
-//        if (ke.getKeyCode() == KeyEvent.VK_ESCAPE)
-//        {
-//            System.out.println("esc pressed");
-//            gamestate = 0;
-//        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent ke) 
-    {
-        //System.out.println("key pressed");
-    }
-
-    @Override
-    public void keyReleased(KeyEvent ke) {}
 }

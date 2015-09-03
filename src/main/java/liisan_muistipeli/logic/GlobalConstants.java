@@ -3,7 +3,6 @@ package liisan_muistipeli.logic;
 /**
  * Oletusarvoiset globaalit muuttujat tulevat tästä interfacesta
  */
-
 public interface GlobalConstants
 {
     int i_horizontalsize = 1024, i_verticalsize = 768, i_cardsize = 120;

@@ -154,22 +154,18 @@ public class PositionController
         
         if (moving.fx() > still.fx() && moving.fy() <= still.fy())  // toisella neljänneksellä.
         {
-            //System.out.println("toka");
             angle.set(2*Math.PI+Math.atan((still.fx()-moving.fx())/(still.fy()-moving.fy())));
         }
         if (moving.fx() >= still.fx() && moving.fy() > still.fy()) // ensimmäisellä neljänneksellä
         {
-            //System.out.println("eka");
             angle.set(Math.PI+Math.atan((moving.fx()-still.fx())/(moving.fy()-still.fy())));
         }
         if (moving.fx() < still.fx() && moving.fy() <= still.fy()) // kolmas neljännes
         {
-            //System.out.println("kolmas atan: "+(still.fx()-moving.fx())/(still.fy()-moving.fy()));
             angle.set(Math.atan((still.fx()-moving.fx())/(still.fy()-moving.fy())));
         }
         if (moving.fx() < still.fx() && moving.fy() > still.fy()) // neljäs neljännes
         {
-            //System.out.println("neljäs");
             angle.set(Math.PI+Math.atan((still.fx()-moving.fx())/(still.fy()-moving.fy())));
         }
         

@@ -71,39 +71,6 @@ public final class Engine
         if (lower == null) return null;
         if (upper.id() == lower.id()) return upper;
         else return null;
-        
-//        boolean up = true;
-//        boolean down = true;
-//        Card found = null;
-//        for (int i = 0; i < global.getCardsize(); i++)
-//          {
-//            //if (y-i < 0) return null;
-//            //if (y+i > global.getVerticalsize()-1) return null;
-//            
-//            if (up && pc.get_by_coordinates(y + i, x) != null)
-//              {
-//                if (found == null)
-//                  {
-//                    up = false;
-//                    found = pc.get_by_coordinates(y + i, x);
-//                  } else if (found == pc.get_by_coordinates(y + i, x))
-//                  {
-//                    break;
-//                  }
-//              }
-//            if (down && pc.get_by_coordinates(y - 1, x) != null)
-//              {
-//                if (found == null)
-//                  {
-//                    down = false;
-//                    found = pc.get_by_coordinates(y - i, x);
-//                  } else if (found == pc.get_by_coordinates(y - i, x))
-//                  {
-//                    break;
-//                  }
-//              }
-//          }
-//        return found;
     }
 
     /**

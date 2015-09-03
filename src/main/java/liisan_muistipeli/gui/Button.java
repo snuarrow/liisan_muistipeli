@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package liisan_muistipeli.gui;
 
 import java.awt.Color;
@@ -11,8 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 /**
- *
- * @author hexvaara
+ * Nappi joka muuttaa väriään kun hiiri viedään sen kohdalle.
  */
 public class Button
 {
@@ -25,7 +19,6 @@ public class Button
     private Color backgroundcolor, fontcolor, bordercolor;
     private Font font;
     private int click;
-    
     
     public Button(int x, int y, int width, int height, int fontsize, String text, int click, Font font)
     {
@@ -78,12 +71,12 @@ public class Button
         g.setColor(fontcolor);
         g.drawString(text, x, y);
     }
-    public void drawBorder(Graphics2D g)
+    public void drawBorder(Graphics2D g) // for decoration
     {
         g.setColor(bordercolor);
         g.drawRect(x, y, x+width, y+height);
     }
-    public void drawBackGround(Graphics2D g)
+    public void drawBackGround(Graphics2D g) // for decoration
     {
         g.setColor(backgroundcolor);
         g.fillRect(x, y, x+width, y+height);
@@ -113,13 +106,6 @@ public class Button
      */
     public int click()
     {
-        //System.out.println(click+" button clicked!"); // tää poistettava lopullisessa palautuksessa.
         return click;
     }
-    
-    
-    
-    
-    
-    
 }

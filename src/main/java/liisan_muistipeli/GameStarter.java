@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package liisan_muistipeli;
 
 import java.awt.Color;
@@ -33,7 +28,6 @@ public class GameStarter
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(global.getHorizontalsize(), global.getVerticalsize());
         f.setLocationRelativeTo(null);
-        //System.out.println("cardamount : "+global.getCardamount());
     }
     public void closeFrame()
     {
