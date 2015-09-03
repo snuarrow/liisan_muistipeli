@@ -212,13 +212,13 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
         
         switch (gamestate)
         {
-            case 0 : 
+            case 0 : // start menu state
                     {
                         Button button = startmenu.mouseclicked(me);
                         if (button != null) gamestate = button.click();
                     } break;
                 
-            case 1 :
+            case 1 : // in game state
                     {
                         if (me.getButton() == 3) // mouse secondary clicked
                         {
