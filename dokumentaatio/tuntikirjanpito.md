@@ -32,3 +32,5 @@
 2.9 2000 -> 2300 engine luokalle kunnolliset testit, nyt pelissä voi palata aloitusvalikkoon mouse secondaryllä
 3.9 1100 -> 2300 dokumentaatioita kuntoon, koodin siistimistä
 
+3.9 2359 -> palautus tarkistettavaksi
+
