@@ -30,5 +30,5 @@
 1.9 0000 -> 0300 valikoiden siistimistä
 1.9 1400 -> 2000 peli nyt palautusvalmis, toimiva jar luotu, dokumentaatioiden täydennystä
 2.9 2000 -> 2300 engine luokalle kunnolliset testit, nyt pelissä voi palata aloitusvalikkoon mouse secondaryllä
-3.9 1100 -> 2000 dokumentaatioita kuntoon, koodin siistimistä
+3.9 1100 -> 2300 dokumentaatioita kuntoon, koodin siistimistä
 
