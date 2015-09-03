@@ -261,7 +261,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                                         
                                     if (settingsmenu.getDifficulty() == 1) // normal
                                     {
-                                        global.setCardsize(global.getVerticalsize()/10);
+                                        global.setCardsize((int) (global.getVerticalsize()/8.5));
                                     } else if (settingsmenu.getDifficulty() == 0) // kid's stuff
                                     {
                                         global.setCardsize(global.getVerticalsize()/5);
