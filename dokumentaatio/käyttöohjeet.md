@@ -6,7 +6,8 @@ instructions for muistipeli
 			or alter settings, remember apply if desired.
 
 	in game:
-		if desired, click mouse secondary to return main menu, caution: progress will not be saved.
+		if desired, click mouse secondary to return main menu, 
+				caution: progress will not be saved.
 
 		1. click face
 		2. inspect picture
