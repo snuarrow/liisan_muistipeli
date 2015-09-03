@@ -220,7 +220,7 @@ public class MainFrame extends JPanel implements ActionListener, MouseListener, 
                 
             case 1 :
                     {
-                        if (me.getButton() == 3)
+                        if (me.getButton() == 3) // mouse secondary clicked
                         {
                             gamestate = 0;
                             engine = new Engine(global);
