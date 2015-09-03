@@ -11,5 +11,3 @@ ladataan tuolta zip ->
 suoritetaan komentoriviltä "java -jar liisan_muistipeli-0.1.jar"
 
 tai graafisesta käyttöliittymästä "open with java runtime"
-
-Ohjelma muutamia dokumentaatioita ja koodin siistimisiä vaille valmis.
