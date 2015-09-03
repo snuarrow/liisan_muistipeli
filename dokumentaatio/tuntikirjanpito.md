@@ -68,3 +68,4 @@ tuntikirjanpito
 	3.9 2359 ->
 		palautus tarkistettavaksi
 
+yht ~105h
