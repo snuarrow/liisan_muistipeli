@@ -1,6 +1,6 @@
 ohjelma koostuu kahdesta paketista, ohjelmalogiikasta ja käyttöliittymästä.
 
-kun peli käynnistetään, latadataan kortit satunnaisesti noin 500 kuvan kannasta. pelin ei pitäisi olla millään pelikerralla täysin samanlainen.
+kun peli käynnistetään, ladataan kortit satunnaisesti noin 500 kuvan kannasta. pelin ei pitäisi olla millään pelikerralla täysin samanlainen.
 
 ohjelmalogiikka hallitsee korttien sijaintiin, törmäilyyn ja kuvien näyttämiseen tarvittavaa tietoa. jokaisella kortilla on liukulukukoordinaatit ja näiden koordinaattien mukaan päivitetään nollamatriisiin(hitboxboard) kortin id:tä onton neliön muotoisiin kuvioihin. kun kortti liikkuu, piirretään hitboxboardiin aina neliö eri kohtaan, kun neliöt kohtaavat sattuu törmäys joka käsitellään eri tavoin riippuen kortin sijainnista. kun korttia klikataan, annetaan kyseiselle kortille satunnainen kulma väliltä 0-360 astetta sekä vakio aloitusnopeus. käyttöliittymän timer triggeröi ohjelmalogiikan yhden iteraation jolloin käydään jokainen kortti läpi ja liikutellaan niitä mikäli liikettä on.
 
