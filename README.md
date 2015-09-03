@@ -4,10 +4,8 @@ versio 0.1
 Muistipeli fysiikkamoottorilla.
 Dokumentaatiot omassa kansiossaan.
 
-ohjelma pakattu liisan_muistipeli-0.1.jar
-
 ladataan tuolta zip ->
 
-suoritetaan komentoriviltä "java -jar liisan_muistipeli-0.1.jar"
-
-tai graafisesta käyttöliittymästä "open with java runtime"
+	ohjelma pakattu liisan_muistipeli-0.1.jar tiedostoon
+	suoritetaan komentoriviltä "java -jar liisan_muistipeli-0.1.jar"
+	tai graafisesta käyttöliittymästä "open with java runtime"
